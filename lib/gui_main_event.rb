@@ -17,6 +17,7 @@ require 'gui_bug_event'
 require 'gui'
 require 'yaml'
 require 'thread'
+require 'fileutils'
 
 include GUI
 
@@ -28,6 +29,10 @@ class GUIMainEvent < GUIMain
         
         log(1, "Program Started")
         log(0, "Initialization started")
+
+        log(0, "Checking directories")
+        FileUtils.mkdir "logs" unless `ls`.match(/logs/)
+        FileUtils.mkdir "bugs" unless `ls`.match(/bugs/)
 
         # Events
         
@@ -403,6 +408,7 @@ class GUIMainEvent < GUIMain
         end
         if $edit
             to_edit = $script.script[$edit]
+            
             if to_edit.instance_of?(WriteEvent)
                 log(0, "Editing write event")
                 @event_choice.set_string_selection("Write Event")
