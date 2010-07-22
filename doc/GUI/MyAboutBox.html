@@ -199,30 +199,30 @@ Dialog displaying program information.
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui.rb, line 93</span>
- 93:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>)
- 94:             <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">1</span>, <span class="ruby-value str">&quot;About Fireworks Script Utility&quot;</span>)
- 95:             <span class="ruby-identifier">sizer</span> = <span class="ruby-constant">BoxSizer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">HORIZONTAL</span>)
- 96:             <span class="ruby-identifier">set_size</span>(<span class="ruby-constant">Size</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">510</span>,<span class="ruby-value">300</span>))
- 97:             <span class="ruby-identifier">header_font</span> = <span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">28</span>, <span class="ruby-constant">SWISS</span>, <span class="ruby-constant">NORMAL</span>, <span class="ruby-constant">NORMAL</span>)
- 98:             <span class="ruby-identifier">body_font</span> = <span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">12</span>, <span class="ruby-constant">SWISS</span>, <span class="ruby-constant">NORMAL</span>, <span class="ruby-constant">NORMAL</span>)
- 99:             <span class="ruby-identifier">title</span> = <span class="ruby-constant">StaticText</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Fireworks Script Utility&quot;</span>, <span class="ruby-constant">Point</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">20</span>, <span class="ruby-value">20</span>))
-100:             <span class="ruby-identifier">title</span>.<span class="ruby-identifier">set_font</span>(<span class="ruby-identifier">header_font</span>)
-101: 
-102:             <span class="ruby-identifier">r_version</span> = <span class="ruby-constant">StaticText</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Running on Ruby version &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">RUBY_VERSION</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; on &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">RUBY_PLATFORM</span>, <span class="ruby-constant">Point</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">20</span>,<span class="ruby-value">100</span>))
-103:             <span class="ruby-identifier">r_version</span>.<span class="ruby-identifier">set_font</span>(<span class="ruby-identifier">body_font</span>)
-104:             <span class="ruby-identifier">r_version</span>.<span class="ruby-identifier">set_foreground_colour</span>(<span class="ruby-constant">RED</span>)
-105: 
-106:             <span class="ruby-identifier">wx_version</span> = <span class="ruby-constant">StaticText</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">VERSION_STRING</span>, <span class="ruby-constant">Point</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">20</span>,<span class="ruby-value">120</span>))
-107:             <span class="ruby-identifier">wx_version</span>.<span class="ruby-identifier">set_font</span>(<span class="ruby-identifier">body_font</span>)
-108:             <span class="ruby-identifier">wx_version</span>.<span class="ruby-identifier">set_foreground_colour</span>(<span class="ruby-constant">BLUE</span>)
-109: 
-110:             <span class="ruby-identifier">str</span> = <span class="ruby-value str">&quot;Fireworks Script Utility version 0.1.0\nCopyright 2010\nDeveloped by Al Scott\nThis is free software licensed under the GNU GPL v3&quot;</span>
-111:             <span class="ruby-identifier">body</span> = <span class="ruby-constant">StaticText</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">str</span>, <span class="ruby-constant">Point</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">20</span>, <span class="ruby-value">160</span>))
-112:             <span class="ruby-identifier">body</span>.<span class="ruby-identifier">set_font</span>(<span class="ruby-identifier">body_font</span>)
-113: 
-114:             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">centre_on_parent</span>(<span class="ruby-constant">BOTH</span>)
-115:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui.rb, line 96</span>
+ 96:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>)
+ 97:             <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">1</span>, <span class="ruby-value str">&quot;About Fireworks Script Utility&quot;</span>)
+ 98:             <span class="ruby-identifier">sizer</span> = <span class="ruby-constant">BoxSizer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">HORIZONTAL</span>)
+ 99:             <span class="ruby-identifier">set_size</span>(<span class="ruby-constant">Size</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">510</span>,<span class="ruby-value">300</span>))
+100:             <span class="ruby-identifier">header_font</span> = <span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">28</span>, <span class="ruby-constant">SWISS</span>, <span class="ruby-constant">NORMAL</span>, <span class="ruby-constant">NORMAL</span>)
+101:             <span class="ruby-identifier">body_font</span> = <span class="ruby-constant">Font</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">12</span>, <span class="ruby-constant">SWISS</span>, <span class="ruby-constant">NORMAL</span>, <span class="ruby-constant">NORMAL</span>)
+102:             <span class="ruby-identifier">title</span> = <span class="ruby-constant">StaticText</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Fireworks Script Utility&quot;</span>, <span class="ruby-constant">Point</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">20</span>, <span class="ruby-value">20</span>))
+103:             <span class="ruby-identifier">title</span>.<span class="ruby-identifier">set_font</span>(<span class="ruby-identifier">header_font</span>)
+104: 
+105:             <span class="ruby-identifier">r_version</span> = <span class="ruby-constant">StaticText</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Running on Ruby version &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">RUBY_VERSION</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; on &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">RUBY_PLATFORM</span>, <span class="ruby-constant">Point</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">20</span>,<span class="ruby-value">100</span>))
+106:             <span class="ruby-identifier">r_version</span>.<span class="ruby-identifier">set_font</span>(<span class="ruby-identifier">body_font</span>)
+107:             <span class="ruby-identifier">r_version</span>.<span class="ruby-identifier">set_foreground_colour</span>(<span class="ruby-constant">RED</span>)
+108: 
+109:             <span class="ruby-identifier">wx_version</span> = <span class="ruby-constant">StaticText</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">VERSION_STRING</span>, <span class="ruby-constant">Point</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">20</span>,<span class="ruby-value">120</span>))
+110:             <span class="ruby-identifier">wx_version</span>.<span class="ruby-identifier">set_font</span>(<span class="ruby-identifier">body_font</span>)
+111:             <span class="ruby-identifier">wx_version</span>.<span class="ruby-identifier">set_foreground_colour</span>(<span class="ruby-constant">BLUE</span>)
+112: 
+113:             <span class="ruby-identifier">str</span> = <span class="ruby-value str">&quot;Fireworks Script Utility version 0.1.0\nCopyright 2010\nDeveloped by Al Scott\nThis is free software licensed under the GNU GPL v3&quot;</span>
+114:             <span class="ruby-identifier">body</span> = <span class="ruby-constant">StaticText</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">str</span>, <span class="ruby-constant">Point</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">20</span>, <span class="ruby-value">160</span>))
+115:             <span class="ruby-identifier">body</span>.<span class="ruby-identifier">set_font</span>(<span class="ruby-identifier">body_font</span>)
+116: 
+117:             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">centre_on_parent</span>(<span class="ruby-constant">BOTH</span>)
+118:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

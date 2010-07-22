@@ -209,20 +209,20 @@ included numbers.
 					<div class="method-source-code"
 						id="expand-ranges-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui.rb, line 71</span>
-71:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expand_ranges</span>(<span class="ruby-identifier">nums</span>)
-72:         <span class="ruby-identifier">values</span> = []
-73:         <span class="ruby-identifier">nums</span> = <span class="ruby-identifier">nums</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;,&quot;</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">strip!</span>}
-74:         <span class="ruby-identifier">nums</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">range</span><span class="ruby-operator">|</span>
-75:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/-/</span>)
-76:                 <span class="ruby-identifier">range</span> = <span class="ruby-identifier">range</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;-&quot;</span>)
-77:                 (<span class="ruby-identifier">range</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span><span class="ruby-operator">..</span><span class="ruby-identifier">range</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">num</span><span class="ruby-operator">|</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">num</span>)}
-78:             <span class="ruby-keyword kw">else</span>
-79:                 <span class="ruby-identifier">values</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">range</span>.<span class="ruby-identifier">to_i</span>)
-80:             <span class="ruby-keyword kw">end</span>
-81:         <span class="ruby-keyword kw">end</span>
-82:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">uniq</span>
-83:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/gui.rb, line 73</span>
+73:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expand_ranges</span>(<span class="ruby-identifier">nums</span>)
+74:         <span class="ruby-identifier">values</span> = []
+75:         <span class="ruby-identifier">nums</span> = <span class="ruby-identifier">nums</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;,&quot;</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">strip!</span>}
+76:         <span class="ruby-identifier">nums</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">range</span><span class="ruby-operator">|</span>
+77:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">range</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/-/</span>)
+78:                 <span class="ruby-identifier">range</span> = <span class="ruby-identifier">range</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;-&quot;</span>)
+79:                 (<span class="ruby-identifier">range</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span><span class="ruby-operator">..</span><span class="ruby-identifier">range</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">num</span><span class="ruby-operator">|</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">num</span>)}
+80:             <span class="ruby-keyword kw">else</span>
+81:                 <span class="ruby-identifier">values</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">range</span>.<span class="ruby-identifier">to_i</span>)
+82:             <span class="ruby-keyword kw">end</span>
+83:         <span class="ruby-keyword kw">end</span>
+84:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">values</span>.<span class="ruby-identifier">uniq</span>
+85:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -256,33 +256,33 @@ accordingly.
 					<div class="method-source-code"
 						id="neaten-numbers-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui.rb, line 42</span>
-42:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">neaten_numbers</span>(<span class="ruby-identifier">nums</span>)
-43:         <span class="ruby-identifier">nums</span>.<span class="ruby-identifier">sort!</span>
-44:         <span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>
-45:         <span class="ruby-identifier">range</span> = <span class="ruby-keyword kw">nil</span>
-46:         <span class="ruby-identifier">nums</span>.<span class="ruby-identifier">each_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
-47:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">nums</span>[<span class="ruby-identifier">index</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">nums</span>[<span class="ruby-identifier">index</span>]<span class="ruby-operator">+</span><span class="ruby-value">1</span>
-48:                 <span class="ruby-identifier">range</span> = <span class="ruby-identifier">nums</span>[<span class="ruby-identifier">index</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">range</span>
-49:             <span class="ruby-keyword kw">else</span>
-50:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">range</span>
-51:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>
-52:                         <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;#{str}, #{range}-#{nums[index]}&quot;</span>
-53:                     <span class="ruby-keyword kw">else</span>
-54:                         <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;#{range}-#{nums[index]}&quot;</span>
-55:                     <span class="ruby-keyword kw">end</span>
-56:                     <span class="ruby-identifier">range</span> = <span class="ruby-keyword kw">nil</span>
-57:                 <span class="ruby-keyword kw">else</span>
-58:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>
-59:                         <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;#{str}, #{nums[index]}&quot;</span>
-60:                     <span class="ruby-keyword kw">else</span>
-61:                         <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;#{nums[index]}&quot;</span>
-62:                     <span class="ruby-keyword kw">end</span>
-63:                 <span class="ruby-keyword kw">end</span>
-64:             <span class="ruby-keyword kw">end</span>
-65:         <span class="ruby-keyword kw">end</span>
-66:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">str</span>
-67:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/gui.rb, line 44</span>
+44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">neaten_numbers</span>(<span class="ruby-identifier">nums</span>)
+45:         <span class="ruby-identifier">nums</span>.<span class="ruby-identifier">sort!</span>
+46:         <span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>
+47:         <span class="ruby-identifier">range</span> = <span class="ruby-keyword kw">nil</span>
+48:         <span class="ruby-identifier">nums</span>.<span class="ruby-identifier">each_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+49:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">nums</span>[<span class="ruby-identifier">index</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">nums</span>[<span class="ruby-identifier">index</span>]<span class="ruby-operator">+</span><span class="ruby-value">1</span>
+50:                 <span class="ruby-identifier">range</span> = <span class="ruby-identifier">nums</span>[<span class="ruby-identifier">index</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">range</span>
+51:             <span class="ruby-keyword kw">else</span>
+52:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">range</span>
+53:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>
+54:                         <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;#{str}, #{range}-#{nums[index]}&quot;</span>
+55:                     <span class="ruby-keyword kw">else</span>
+56:                         <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;#{range}-#{nums[index]}&quot;</span>
+57:                     <span class="ruby-keyword kw">end</span>
+58:                     <span class="ruby-identifier">range</span> = <span class="ruby-keyword kw">nil</span>
+59:                 <span class="ruby-keyword kw">else</span>
+60:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>
+61:                         <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;#{str}, #{nums[index]}&quot;</span>
+62:                     <span class="ruby-keyword kw">else</span>
+63:                         <span class="ruby-identifier">str</span> = <span class="ruby-node">&quot;#{nums[index]}&quot;</span>
+64:                     <span class="ruby-keyword kw">end</span>
+65:                 <span class="ruby-keyword kw">end</span>
+66:             <span class="ruby-keyword kw">end</span>
+67:         <span class="ruby-keyword kw">end</span>
+68:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">str</span>
+69:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -306,19 +306,21 @@ accordingly.
 
 				<div class="method-description">
 					
-					
+					<p>
+Populates a listbox with data from an array.
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="populate-list-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui.rb, line 85</span>
-85:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">populate_list</span>(<span class="ruby-identifier">list</span>)
-86:         <span class="ruby-identifier">list</span>.<span class="ruby-identifier">clear</span>
-87:         <span class="ruby-identifier">events</span> = <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;&amp;&amp;&amp;&quot;</span>)
-88:         <span class="ruby-identifier">list</span>.<span class="ruby-identifier">insert_items</span>(<span class="ruby-identifier">events</span>, <span class="ruby-value">0</span>)
-89:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/gui.rb, line 88</span>
+88:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">populate_list</span>(<span class="ruby-identifier">list</span>)
+89:         <span class="ruby-identifier">list</span>.<span class="ruby-identifier">clear</span>
+90:         <span class="ruby-identifier">events</span> = <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;&amp;&amp;&amp;&quot;</span>)
+91:         <span class="ruby-identifier">list</span>.<span class="ruby-identifier">insert_items</span>(<span class="ruby-identifier">events</span>, <span class="ruby-value">0</span>)
+92:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

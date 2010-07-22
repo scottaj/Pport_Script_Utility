@@ -24,6 +24,7 @@ include GUI
 # Class containing event code for the main GUI window.
 class GUIMainEvent < GUIMain
 
+    # Initializes Events for the main GUI window.
     def initialize
         super
         
@@ -80,6 +81,10 @@ class GUIMainEvent < GUIMain
     end
 
     # Writes a log message to the screen on the log tab.
+    #
+    # *<i>level</i>: An integer, either 0, 1, or 2 which correspond respectivly
+    #                "low", "normal", and "high" priority messages.
+    # *<i>message</i>: A log message as a string.
     def log(level, message)
         levels = ["Low", "Normal", "High"]
         @log_text.set_insertion_point_end
@@ -160,9 +165,13 @@ class GUIMainEvent < GUIMain
     end
 
     # Runs the current script. the mod variable determines what type of run is
-    # started: mod<0 is a dry run where no data is output, mod==0 is a normal
-    # run starting from the beginning of the script, mod>0 finds the currently
-    # selected command and starts the run from there.
+    # started:
+    #
+    # <i>mod</i>:
+    # * mod<0 is a dry run where no data is output
+    # * mod==0 is a normal run starting from the beginning of the script
+    # * mod>0 finds the currently selected command and starts the
+    #   run from there.
     def run_script(mod = 0)
         begin
             @window_notebook.set_selection(2)
@@ -292,9 +301,11 @@ class GUIMainEvent < GUIMain
         end
     end
 
-    # Adds an event to the script. pos is an optional argument that gives a
-    # position to insert the event at, other wise the event is just added to
-    # the end of the script.
+    # Adds an event to the script.
+    #
+    # *<i>pos</i>: an optional argument that gives a
+    #              position to insert the event at, otherwise the event
+    #              is just added to the end of the script.
     def add_event(pos = false)
         log(1, "Adding event #{"at position#{pos}" if pos}")
         if $edit
@@ -357,6 +368,13 @@ class GUIMainEvent < GUIMain
     end
 
     # Moves an event up or down in the script.
+    #
+    # <i>dir</i>: A number
+    #             
+    #             *If dir is negative then the selected item is
+    #             moved up <i>dir</i> places.
+    #             *If dir is positive then the selected item is
+    #             moved down <i>dir</i> places.
     def move_event(dir)
         log(1, "Moving event #{"up" if dir<0}#{"down" if dir>0}")
         begin
@@ -371,7 +389,11 @@ class GUIMainEvent < GUIMain
         $edit = false
     end
 
-    # Removes an event from the script
+    # Removes an event from the script.
+    #
+    # <i>pos</i>:
+    #    * If pos is false or nil the currently selected event is deleted.
+    #    * If pos is a number then the script item at that position is deleted.
     def delete_event(pos = false)
         log(1, "Deleting event")
         if pos
@@ -395,7 +417,7 @@ class GUIMainEvent < GUIMain
         $edit = false
     end
 
-    # Edits an event in the script
+    # Edits an event in the script.
     def edit_event()
         log(1, "Editing current event")
         begin
@@ -444,7 +466,7 @@ class GUIMainEvent < GUIMain
         add_event()
     end
 
-    # Stops any currently running script.
+    # Stops any currently running script, killing the thread it is running in.
     def stop_run()
         log(0, "Script told to stop.")
 		return unless $run
@@ -462,7 +484,8 @@ class GUIMainEvent < GUIMain
         $run.run
     end
 
-    # Pauses any currently running script.
+    # Pauses any currently running script, a currently executing command will
+    # still finish.
     def pause_run()
         log(0, "Script told to pause.")
 		return unless $run

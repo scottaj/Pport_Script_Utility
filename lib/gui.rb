@@ -33,8 +33,10 @@ module GUI
     # Script
     $script = Script.new
 
+    # Flag determining if edits have been made since the last save.
     $edit = false
 
+    # Thread running the script.
     $run = nil
 
     # Turns an array of numbers into a string with ranges of numbers
@@ -82,6 +84,7 @@ module GUI
         return values.uniq
     end
 
+    # Populates a listbox with data from an array.
     def populate_list(list)
         list.clear
         events = $script.to_s.split("&&&")

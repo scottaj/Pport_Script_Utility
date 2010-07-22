@@ -19,12 +19,9 @@ include GUI
 # Class with event code for the configuration dialog.
 class GUIConfEvent < GUIConf
 
+    # Initializes the configuration window.
     def initialize(parent)
         super
-
-        if RUBY_PLATFORM.match(/mswin/i)
-            self.set_icon('fireworks.ico')
-        end
 
         @parent = parent
 

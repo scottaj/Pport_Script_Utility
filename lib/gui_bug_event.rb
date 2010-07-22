@@ -17,6 +17,7 @@ require 'gui'
 # Class describing the actions and event in the bug reporting dialog.
 class GUIBugEvent < GUIBug
 
+    # The bug report window is initialized.
     def initialize(parent)
         super
 
