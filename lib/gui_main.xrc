@@ -38,9 +38,6 @@
                 <object class="wxMenuItem" name="run_dryrun">
                     <label>_Dry Run</label>
                 </object>
-                <object class="wxMenuItem" name="run_test">
-                    <label>_Test</label>
-                </object>
             </object>
             <object class="wxMenu" name="menu_tools">
                 <label>_Tools</label>

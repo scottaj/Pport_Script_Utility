@@ -9,7 +9,7 @@
 class GUIMain < Wx::Frame
 	
 	attr_reader :window_menubar, :object_1, :object_2, :run_run,
-              :run_run_from, :run_dryrun, :run_test, :menu_tools,
+              :run_run_from, :run_dryrun, :menu_tools,
               :tools_conf, :menu_help, :help_bug, :window_notebook,
               :notebook_editor, :event_choice, :command_choice,
               :label_1, :data_text, :label_2, :comment_text,
@@ -43,7 +43,6 @@ class GUIMain < Wx::Frame
 		@run_run = finder.call("run_run")
 		@run_run_from = finder.call("run_run_from")
 		@run_dryrun = finder.call("run_dryrun")
-		@run_test = finder.call("run_test")
 		@menu_tools = finder.call("menu_tools")
 		@tools_conf = finder.call("tools_conf")
 		@menu_help = finder.call("menu_help")

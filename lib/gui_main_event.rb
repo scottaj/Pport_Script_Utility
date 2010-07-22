@@ -50,7 +50,6 @@ class GUIMainEvent < GUIMain
         evt_menu(@run_run)                  {run_script()}
         evt_menu(@run_dryrun)               {run_script(-1)}
         evt_menu(@run_run_from)             {run_script(1)}
-        evt_menu(@run_test)                 {}# test executable in here.
 
         # "Tools" menu.
         evt_menu(@tools_conf)               {display_conf_window()}
