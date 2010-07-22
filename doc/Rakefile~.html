@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: Rakefile~ [RDoc Documentation]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./LICENSE.html">LICENSE</a></li>
+				
+					<li class="file"><a href="./README.html">README</a></li>
+				
+					<li class="file"><a href="./README~.html">README~</a></li>
+				
+					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+				
+					<li class="file"><a href="./Rakefile~.html">Rakefile~</a></li>
+				
+					<li class="file"><a href="./nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./GUI.html">GUI</a></li>
+				
+					<li><a href="./GUI/MyAboutBox.html">GUI::MyAboutBox</a></li>
+				
+					<li><a href="./Event.html">Event</a></li>
+				
+					<li><a href="./FwApp.html">FwApp</a></li>
+				
+					<li><a href="./GUIBug.html">GUIBug</a></li>
+				
+					<li><a href="./GUIBugEvent.html">GUIBugEvent</a></li>
+				
+					<li><a href="./GUIConf.html">GUIConf</a></li>
+				
+					<li><a href="./GUIConfEvent.html">GUIConfEvent</a></li>
+				
+					<li><a href="./GUIMain.html">GUIMain</a></li>
+				
+					<li><a href="./GUIMainEvent.html">GUIMainEvent</a></li>
+				
+					<li><a href="./Object.html">Object</a></li>
+				
+					<li><a href="./ReadEvent.html">ReadEvent</a></li>
+				
+					<li><a href="./Script.html">Script</a></li>
+				
+					<li><a href="./TimeEvent.html">TimeEvent</a></li>
+				
+					<li><a href="./WaitEvent.html">WaitEvent</a></li>
+				
+					<li><a href="./WriteEvent.html">WriteEvent</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<p>
+#  # This program is free software: you can redistribute it and/or modify #
+it under the terms of the GNU General Public License as published by # the
+Free Software Foundation, either version 3 of the License, or # (at your
+option) any later version. #  # This program is distributed in the hope
+that it will be useful, # but WITHOUT ANY WARRANTY; without even the
+implied warranty of # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the # GNU General Public License for more details. #  # You should have
+received a copy of the GNU General Public License # along with this
+program.  If not, see <<a
+href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>>.
+</p>
+<pre>
+ 
+</pre>
+<p>
+require &#8216;rubygems&#8217; require &#8216;rake&#8217; require
+&#8216;rake/clean&#8217; require &#8216;rake/gempackagetask&#8217; require
+&#8216;rake/rdoctask&#8217; require &#8216;rake/testtask&#8216;
+</p>
+<p>
+spec = Gem::Specification.new do |s|
+</p>
+<pre>
+  s.name = 'fworks_script_utility'
+  s.version = '0.3.0'
+  s.has_rdoc = true
+  s.extra_rdoc_files = ['README', 'LICENSE']
+  s.summary = 'A utility for scripting fireworks or other light shows'
+  s.description = s.summary
+  s.author = 'Al Scott'
+  s.email = 'scottaj2@udmercy.edu'
+  # s.executables = ['your_executable_here']
+  s.files = %w(LICENSE README Rakefile) + Dir.glob(&quot;{bin,lib,spec}/**/*&quot;)
+  s.require_path = &quot;lib&quot;
+  s.bindir = &quot;bin&quot;
+  s.add_runtime_dependency 'wxruby'
+  s.add_runtime_dependency 'wx_sugar'
+</pre>
+<p>
+end
+</p>
+<p>
+Rake::GemPackageTask.new(spec) do |p|
+</p>
+<pre>
+  p.gem_spec = spec
+  p.need_tar = true
+  p.need_zip = true
+</pre>
+<p>
+end
+</p>
+<p>
+Rake::RDocTask.new do |rdoc|
+</p>
+<pre>
+  files =['README', 'LICENSE', 'lib/**/*.rb', 'lib/**/*.rbw']
+  rdoc.external = true
+  rdoc.rdoc_files.add(files)
+  rdoc.main = &quot;README&quot; # page to start on
+  rdoc.title = &quot;fworks_script_utility Docs&quot;
+  rdoc.rdoc_dir = 'doc/rdoc' # rdoc output folder
+  rdoc.options &lt;&lt; '--line-numbers'
+  rdoc.options &lt;&lt; '--all'
+  rdoc.options &lt;&lt; '--promiscuous'
+</pre>
+<p>
+end
+</p>
+<p>
+Rake::TestTask.new do |t|
+</p>
+<pre>
+  t.test_files = FileList['test/**/*.rb']
+</pre>
+<p>
+end
+</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Script</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./lib/script_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/script.rb">lib/script.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link"><a href="Object.html">Object</a></p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-add_event">#add_event</a></li>
+					
+					<li><a href="#method-i-dry_run">#dry_run</a></li>
+					
+					<li><a href="#method-i-move_event">#move_event</a></li>
+					
+					<li><a href="#method-i-remove_event">#remove_event</a></li>
+					
+					<li><a href="#method-i-run">#run</a></li>
+					
+					<li><a href="#method-i-to_s">#to_s</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./LICENSE.html">LICENSE</a></li>
+				
+					<li class="file"><a href="./README.html">README</a></li>
+				
+					<li class="file"><a href="./README~.html">README~</a></li>
+				
+					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+				
+					<li class="file"><a href="./Rakefile~.html">Rakefile~</a></li>
+				
+					<li class="file"><a href="./nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./GUI.html">GUI</a></li>
+				
+					<li><a href="./GUI/MyAboutBox.html">GUI::MyAboutBox</a></li>
+				
+					<li><a href="./Event.html">Event</a></li>
+				
+					<li><a href="./FwApp.html">FwApp</a></li>
+				
+					<li><a href="./GUIBug.html">GUIBug</a></li>
+				
+					<li><a href="./GUIBugEvent.html">GUIBugEvent</a></li>
+				
+					<li><a href="./GUIConf.html">GUIConf</a></li>
+				
+					<li><a href="./GUIConfEvent.html">GUIConfEvent</a></li>
+				
+					<li><a href="./GUIMain.html">GUIMain</a></li>
+				
+					<li><a href="./GUIMainEvent.html">GUIMainEvent</a></li>
+				
+					<li><a href="./Object.html">Object</a></li>
+				
+					<li><a href="./ReadEvent.html">ReadEvent</a></li>
+				
+					<li><a href="./Script.html">Script</a></li>
+				
+					<li><a href="./TimeEvent.html">TimeEvent</a></li>
+				
+					<li><a href="./WaitEvent.html">WaitEvent</a></li>
+				
+					<li><a href="./WriteEvent.html">WriteEvent</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Script</h1>
+
+		<div id="description">
+			<p>
+Class for a fireworks script, which contains an array of events and
+methods to add, remove, and run those events.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="modified-attribute-method" class="method-detail">
+				<a name="modified"></a>
+				
+				<a name="modified="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">modified</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="script-attribute-method" class="method-detail">
+				<a name="script"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">script</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="pause-attribute-method" class="method-detail">
+				<a name="pause"></a>
+				
+				<a name="pause="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">pause</span><span
+						class="attribute-access-type">[W]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/script.rb, line 24</span>
+24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>()
+25:         <span class="ruby-ivar">@script</span> = []
+26:         <span class="ruby-ivar">@modified</span> = <span class="ruby-keyword kw">false</span>
+27:         <span class="ruby-ivar">@pause</span> = <span class="ruby-keyword kw">false</span>
+28:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="add-event-method" class="method-detail ">
+				<a name="method-i-add_event"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">add_event</span><span
+						class="method-args">(event, position = false)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Adds an event to the script at the given position.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="add-event-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/script.rb, line 35</span>
+35:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_event</span>(<span class="ruby-identifier">event</span>, <span class="ruby-identifier">position</span> = <span class="ruby-keyword kw">false</span>)
+36:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">position</span>
+37:             <span class="ruby-ivar">@script</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">position</span>, <span class="ruby-identifier">event</span>)
+38:         <span class="ruby-keyword kw">else</span>
+39:             <span class="ruby-ivar">@script</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">event</span>)
+40:         <span class="ruby-keyword kw">end</span>
+41:         <span class="ruby-ivar">@modified</span> = <span class="ruby-keyword kw">true</span>
+42:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="dry-run-method" class="method-detail ">
+				<a name="method-i-dry_run"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">dry_run</span><span
+						class="method-args">(read_addr, delays)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Runs the script without sending data to any hardware addresses.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="dry-run-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/script.rb, line 115</span>
+115:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dry_run</span>(<span class="ruby-identifier">read_addr</span>, <span class="ruby-identifier">delays</span>)
+116:         <span class="ruby-identifier">event_delay</span> = <span class="ruby-identifier">delays</span>[<span class="ruby-value">0</span>]
+117:         <span class="ruby-identifier">fire_delay</span> = <span class="ruby-identifier">delays</span>[<span class="ruby-value">1</span>]
+118:         <span class="ruby-identifier">prog</span> = <span class="ruby-value">0</span>
+119:         <span class="ruby-identifier">script</span> = <span class="ruby-ivar">@script</span>
+120:         <span class="ruby-identifier">threads</span> = []
+121: 
+122:         <span class="ruby-keyword kw">begin</span>
+123:             <span class="ruby-identifier">inc</span> = (<span class="ruby-value">2560</span><span class="ruby-operator">/</span><span class="ruby-identifier">script</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">to_i</span>
+124:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ZeroDivisionError</span>
+125:             <span class="ruby-identifier">inc</span> = <span class="ruby-value">2560</span>
+126:         <span class="ruby-keyword kw">end</span>
+127: 
+128:         <span class="ruby-identifier">script</span>.<span class="ruby-identifier">each_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+129:             <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">stop</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@pause</span>
+130:             <span class="ruby-identifier">event</span> = <span class="ruby-identifier">script</span>[<span class="ruby-identifier">i</span>]
+131:             <span class="ruby-identifier">value</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">value</span>
+132:             <span class="ruby-identifier">comment</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">comment</span>
+133:             <span class="ruby-identifier">prog</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">inc</span>
+134: 
+135:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
+136:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting until #{value}.\n- #{comment}\n&quot;</span>
+137:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
+138:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>)
+139:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Pausing for #{value} seconds.\n- #{comment}\n&quot;</span>
+140:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
+141:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">ReadEvent</span>)
+142:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting for read address to change.\n- #{comment}\n&quot;</span>
+143:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">read_addr</span>)
+144:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WriteEvent</span>)
+145:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Simulating telling #{value[0]} at position #{value[1]} to fire.\n- #{comment}\n&quot;</span>
+146:                 <span class="ruby-identifier">t</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+147:                     <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">fire_delay</span>)
+148:                     <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{value[0]} at position #{value[1]} would be firing NOW!&quot;</span>
+149:                 <span class="ruby-keyword kw">end</span>
+150:                 <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">t</span>)
+151:             <span class="ruby-keyword kw">end</span>
+152:         <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">event_delay</span>)
+153:         <span class="ruby-keyword kw">end</span>
+154:         <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">join</span>}
+155:         <span class="ruby-keyword kw">yield</span> <span class="ruby-value">2560</span>, <span class="ruby-value str">&quot;Execution Finished!&quot;</span>
+156:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="move-event-method" class="method-detail ">
+				<a name="method-i-move_event"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">move_event</span><span
+						class="method-args">(position, change)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Moves an event up or down in the script. Change should be either 1 or -1.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="move-event-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/script.rb, line 52</span>
+52:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">move_event</span>(<span class="ruby-identifier">position</span>, <span class="ruby-identifier">change</span>)
+53:         <span class="ruby-identifier">temp</span> = <span class="ruby-ivar">@script</span>[<span class="ruby-identifier">position</span>]
+54:         <span class="ruby-ivar">@script</span>[<span class="ruby-identifier">position</span>] = <span class="ruby-ivar">@script</span>[<span class="ruby-identifier">position</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">change</span>]
+55:         <span class="ruby-ivar">@script</span>[<span class="ruby-identifier">position</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">change</span>] = <span class="ruby-identifier">temp</span>
+56:         <span class="ruby-ivar">@modified</span> = <span class="ruby-keyword kw">true</span>
+57:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="remove-event-method" class="method-detail ">
+				<a name="method-i-remove_event"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">remove_event</span><span
+						class="method-args">(position)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Removes the event at the given position.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="remove-event-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/script.rb, line 45</span>
+45:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_event</span>(<span class="ruby-identifier">position</span>)
+46:         <span class="ruby-ivar">@script</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">position</span>)
+47:         <span class="ruby-ivar">@modified</span> = <span class="ruby-keyword kw">true</span>
+48:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="run-method" class="method-detail ">
+				<a name="method-i-run"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">run</span><span
+						class="method-args">(addresses, delays, start = false)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Runs the script out the given hardware addresses.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="run-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/script.rb, line 60</span>
+ 60:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>(<span class="ruby-identifier">addresses</span>, <span class="ruby-identifier">delays</span>, <span class="ruby-identifier">start</span> = <span class="ruby-keyword kw">false</span>)
+ 61:         <span class="ruby-identifier">data_addr</span> = <span class="ruby-identifier">addresses</span>[<span class="ruby-value">0</span>]
+ 62:         <span class="ruby-identifier">ctrl_addr</span> = <span class="ruby-identifier">addresses</span>[<span class="ruby-value">1</span>]
+ 63:         <span class="ruby-identifier">read_addr</span> = <span class="ruby-identifier">addresses</span>[<span class="ruby-value">2</span>]
+ 64:         <span class="ruby-identifier">event_delay</span> = <span class="ruby-identifier">delays</span>[<span class="ruby-value">0</span>]
+ 65:         <span class="ruby-identifier">fire_delay</span> = <span class="ruby-identifier">delays</span>[<span class="ruby-value">1</span>]
+ 66:         <span class="ruby-identifier">prog</span> = <span class="ruby-value">0</span>
+ 67:         <span class="ruby-identifier">script</span> = <span class="ruby-ivar">@script</span>
+ 68:         <span class="ruby-identifier">script</span> = <span class="ruby-identifier">script</span>[<span class="ruby-identifier">start</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">start</span>
+ 69:         <span class="ruby-identifier">threads</span> = []
+ 70:         
+ 71:         <span class="ruby-keyword kw">begin</span>
+ 72:             <span class="ruby-identifier">inc</span> = (<span class="ruby-value">2560</span><span class="ruby-operator">/</span><span class="ruby-identifier">script</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">to_i</span>
+ 73:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ZeroDivisionError</span>
+ 74:             <span class="ruby-identifier">inc</span> = <span class="ruby-value">2560</span>
+ 75:         <span class="ruby-keyword kw">end</span>
+ 76: 
+ 77:         <span class="ruby-identifier">script</span>.<span class="ruby-identifier">each_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+ 78:             <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">stop</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@pause</span>
+ 79:             <span class="ruby-identifier">event</span> = <span class="ruby-identifier">script</span>[<span class="ruby-identifier">i</span>]
+ 80:             <span class="ruby-identifier">value</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">value</span>
+ 81:             <span class="ruby-identifier">comment</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">comment</span>
+ 82:             <span class="ruby-identifier">prog</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">inc</span>
+ 83: 
+ 84:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
+ 85:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting until #{value}.\n- #{comment}\n&quot;</span>
+ 86:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
+ 87:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>)
+ 88:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Pausing for #{value} seconds.\n- #{comment}\n&quot;</span>
+ 89:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
+ 90:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">ReadEvent</span>)
+ 91:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting for read address to change.\n- #{comment}\n&quot;</span>
+ 92:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">read_addr</span>)
+ 93:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WriteEvent</span>)
+ 94:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span>
+ 95:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">strobe</span>(<span class="ruby-identifier">ctrl_addr</span>)
+ 96:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">data_addr</span>)
+ 97:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">strobe</span>(<span class="ruby-identifier">ctrl_addr</span>, <span class="ruby-keyword kw">false</span>)
+ 98:                 <span class="ruby-keyword kw">else</span>
+ 99:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">data_addr</span>)
+100:                 <span class="ruby-keyword kw">end</span>
+101:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Telling #{value[0]} at position #{value[1]} to fire.\n- #{comment}\n&quot;</span>
+102:                 <span class="ruby-identifier">t</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+103:                     <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">fire_delay</span>)
+104:                     <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{value[0]} at position #{value[1]} should be firing NOW!&quot;</span>
+105:                 <span class="ruby-keyword kw">end</span>
+106:                 <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">t</span>)
+107:             <span class="ruby-keyword kw">end</span>
+108:             <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">event_delay</span>)
+109:         <span class="ruby-keyword kw">end</span>
+110:         <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">join</span>}
+111:         <span class="ruby-keyword kw">yield</span> <span class="ruby-value">2560</span>, <span class="ruby-value str">&quot;Execution Finished!&quot;</span>
+112:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="to-s-method" class="method-detail ">
+				<a name="method-i-to_s"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">to_s</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="to-s-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/script.rb, line 158</span>
+158:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>()
+159:         <span class="ruby-identifier">str</span> = []
+160:         <span class="ruby-ivar">@script</span>.<span class="ruby-identifier">each_index</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">push</span>(<span class="ruby-node">&quot;Command #{i+1}/#{@script.length}: #{@script[i].to_s}&quot;</span>)}
+161:         <span class="ruby-identifier">str</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;&amp;&amp;&amp;&quot;</span>)
+162:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
