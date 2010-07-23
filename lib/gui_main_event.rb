@@ -127,10 +127,12 @@ class GUIMainEvent < GUIMain
             log(0, "File selected")
             file = dlg.get_path
             begin
-                File.open(file, 'r') {|fin| $script = YAML.load(fin)}
+                File.open(file, 'r') do |fin|
+                data = YAML.load(fin)
+                $script = data[0]
+                $attr = data[1]
+            end
                 log(0, "Script loaded")
-                File.open("#{file}.atr", 'r') {|fin| $attr = YAML.load(fin)}
-                log(0, "Attributes loaded")
             rescue
                 log(2, "Exception handled in open_script()")
             end
@@ -142,10 +144,8 @@ class GUIMainEvent < GUIMain
     def save_script()
         if $attr[:name]
             log(1, "Saving script to #{$attr[:name]}")
-            File.open($attr[:name], 'w') {|fout| YAML.dump($script, fout)}
-            log(0, "Saving script")
-            File.open("#{$attr[:name]}.atr", 'w') {|fout| YAML.dump($attr, fout)}
-            log(0, "Saving attributes")
+            File.open($attr[:name], 'w') {|fout| YAML.dump([$script, $attr], fout)}
+            log(0, "Script saved")
             $script.modified = false
         else
             saveas_script()
