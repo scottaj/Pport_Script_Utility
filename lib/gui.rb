@@ -27,7 +27,8 @@ module GUI
         :data_addr => 0x378,
         :control_addr => 0x37a,
         :groups => {},
-        :used => []
+        :used => [],
+        :reuse => false
     }
 
     # Script
