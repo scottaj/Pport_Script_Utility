@@ -27,7 +27,7 @@ class FwApp < App
     def on_init
         t = Timer.new(self, 55)
         evt_timer(55) {Thread.pass}
-        t.start(100)
+        t.start(10)
         GUIMainEvent.new.show
     end
 end
