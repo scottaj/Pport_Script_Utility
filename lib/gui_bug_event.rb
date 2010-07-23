@@ -21,10 +21,6 @@ class GUIBugEvent < GUIBug
     def initialize(parent)
         super
 
-        if RUBY_PLATFORM.match(/mswin/i)
-            self.set_icon('fireworks.ico')
-        end
-
         @parent = parent
         evt_close()                     {exit_dlg}
         evt_button(@submit_btn)         {create_report()}
