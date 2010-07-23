@@ -30,14 +30,17 @@ class GUIConfEvent < GUIConf
         @conf_hread_text.set_value("0x#{$attr[:read_addr].to_s(16)}")
         @conf_hdata_text.set_value("0x#{$attr[:data_addr].to_s(16)}")
         @conf_hcontrol_text.set_value("0x#{$attr[:control_addr].to_s(16)}")
+        @allow_reuse_chk.set_value($attr[:reuse])
         write_groups()
 
         # Events
-        evt_close()                 {conf_exit}
+        evt_close()                     {conf_exit()}
         
-        evt_button(ID_APPLY)        {add_group}
-        evt_button(ID_CLEAR)        {clear_group}
-        evt_button(@conf_edit_btn)  {edit_group}
+        evt_button(ID_APPLY)            {add_group()}
+        evt_button(ID_CLEAR)            {clear_group()}
+        evt_button(@conf_edit_btn)      {edit_group()}
+
+        evt_checkbox(@allow_reuse_chk)  {toggle reuse()}
     end
 
     # Writes all current groups to the list.
@@ -107,6 +110,16 @@ class GUIConfEvent < GUIConf
             @conf_group_values_text.set_value(selection[1].strip)
             clear_group()
         rescue NoMethodError # Raised if no group selected from list.
+        end
+    end
+
+    # Toggles ability to reuse group values in a script.
+    # Called when the Reuse chechbox is checked or unchecked.
+    def toggle_reuse()
+        if @allow_reuse_chk.is_checked
+            @allow_reuse_chk.set_value(true)
+        else
+            @allow_reuse_chk.set_value(false)
         end
     end
 end
