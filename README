@@ -4,7 +4,11 @@
 
 v0.4.x
 
-    v0.4.0(current)
+    v0.4.1(current)
+        - Documentation modifications
+        - Minor fixes
+
+    v0.4.0
         - API changes, Pport interfacing is now handled by a seperate module.
         - Icon removed(may be replaced later with an original one)
         - Various files renamed
