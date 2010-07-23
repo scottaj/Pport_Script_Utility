@@ -40,7 +40,7 @@ class GUIConfEvent < GUIConf
         evt_button(ID_CLEAR)            {clear_group()}
         evt_button(@conf_edit_btn)      {edit_group()}
 
-        evt_checkbox(@allow_reuse_chk)  {toggle reuse()}
+        evt_checkbox(@allow_reuse_chk)  {toggle_reuse()}
     end
 
     # Writes all current groups to the list.
@@ -117,9 +117,9 @@ class GUIConfEvent < GUIConf
     # Called when the Reuse chechbox is checked or unchecked.
     def toggle_reuse()
         if @allow_reuse_chk.is_checked
-            @allow_reuse_chk.set_value(true)
+            $attr[:reuse] = true
         else
-            @allow_reuse_chk.set_value(false)
+            $attr[:reuse] = false
         end
     end
 end

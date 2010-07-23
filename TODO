@@ -1,11 +1,14 @@
 TODO
 
-- Add Support for reusing values.
+Next Version:
 
 - Add support for running script in a loop.
 
 - Add ability to pause and play via script commands.
 
 - Add ability to run another script via a script command.
+
+
+Future:
 
 - Add integration with media cuing app(future)

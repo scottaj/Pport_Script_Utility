@@ -82,9 +82,9 @@ class GUIMainEvent < GUIMain
 
     # Writes a log message to the screen on the log tab.
     #
-    # *<i>level</i>: An integer, either 0, 1, or 2 which correspond respectivly
+    # <i>level</i>: An integer, either 0, 1, or 2 which correspond respectivly
     #                "low", "normal", and "high" priority messages.
-    # *<i>message</i>: A log message as a string.
+    # <i>message</i>: A log message as a string.
     def log(level, message)
         levels = ["Low", "Normal", "High"]
         @log_text.set_insertion_point_end
@@ -287,6 +287,7 @@ class GUIMainEvent < GUIMain
                 group = $attr[:groups][choice]
                 value = nil
                 group.each {|val| value = val and break unless $attr[:used].include?(val)}
+                value = group[0] if $attr[:reuse] and not value
                 if value
                     log(0, "Auto-value #{value} found")
                     @data_text.set_value(value.to_s)
@@ -303,9 +304,9 @@ class GUIMainEvent < GUIMain
 
     # Adds an event to the script.
     #
-    # *<i>pos</i>: an optional argument that gives a
-    #              position to insert the event at, otherwise the event
-    #              is just added to the end of the script.
+    # <i>pos</i>: an optional argument that gives a
+    #             position to insert the event at, otherwise the event
+    #             is just added to the end of the script.
     def add_event(pos = false)
         log(1, "Adding event #{"at position#{pos}" if pos}")
         if $edit
@@ -322,9 +323,11 @@ class GUIMainEvent < GUIMain
         if event_type.match(/write/i)
             log(0, "Creating write event")
             begin
-                fail if $attr[:used].include?(@data_text.get_value.to_i) or !($attr[:groups][event_subtype].include?(@data_text.get_value.to_i)) or @data_text.get_value.to_i < 0 or @data_text.get_value.to_i > 511
+                fail if $attr[:used].include?(@data_text.get_value.to_i) unless $attr[:reuse]
+                fail if not ($attr[:groups][event_subtype].include?(@data_text.get_value.to_i))
+                fail if @data_text.get_value.to_i < 0 or @data_text.get_value.to_i > 511
                 event = WriteEvent.new(@comment_text.get_value, event_subtype, @data_text.get_value.to_i)
-                $attr[:used].push(@data_text.get_value.to_i)
+                $attr[:used].push(@data_text.get_value.to_i) unless $attr[:used].include?(@data_text.get_value.to_i)
             rescue RuntimeError
                 log(2, "Exception handled in add_event()")
                 MessageDialog.new(self, "Given value is invalid for this command.",
@@ -371,10 +374,10 @@ class GUIMainEvent < GUIMain
     #
     # <i>dir</i>: A number
     #             
-    #             *If dir is negative then the selected item is
-    #             moved up <i>dir</i> places.
-    #             *If dir is positive then the selected item is
-    #             moved down <i>dir</i> places.
+    # * If dir is negative then the selected item is
+    #   moved up <i>dir</i> places.
+    # * If dir is positive then the selected item is
+    #   moved down <i>dir</i> places.
     def move_event(dir)
         log(1, "Moving event #{"up" if dir<0}#{"down" if dir>0}")
         begin
@@ -392,8 +395,8 @@ class GUIMainEvent < GUIMain
     # Removes an event from the script.
     #
     # <i>pos</i>:
-    #    * If pos is false or nil the currently selected event is deleted.
-    #    * If pos is a number then the script item at that position is deleted.
+    # * If pos is false or nil the currently selected event is deleted.
+    # * If pos is a number then the script item at that position is deleted.
     def delete_event(pos = false)
         log(1, "Deleting event")
         if pos
