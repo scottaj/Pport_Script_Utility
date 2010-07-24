@@ -49,15 +49,16 @@ class GUIMainEvent < GUIMain
 
         # "Run" menu.
         evt_menu(@run_run)                  {run_script()}
-        evt_menu(@run_dryrun)               {run_script(-1)}
         evt_menu(@run_run_from)             {run_script(1)}
+        evt_menu(@run_loop)                 {run_script(2)}
+        evt_menu(@run_dryrun)               {run_script(-1)}
 
         # "Tools" menu.
         evt_menu(@tools_conf)               {display_conf_window()}
 
         # "Help" menu.
         evt_menu(ID_ABOUT)                  {about()}
-        evt_menu(@help_bug)                 {report_bug}
+        evt_menu(@help_bug)                 {report_bug()}
 
         # Other widgets.
         evt_choice(@event_choice)           {event_type_selected()}
@@ -168,10 +169,11 @@ class GUIMainEvent < GUIMain
     # started:
     #
     # <i>mod</i>:
-    # * mod<0 is a dry run where no data is output
+    # * mod==-1 is a dry run where no data is output
     # * mod==0 is a normal run starting from the beginning of the script
-    # * mod>0 finds the currently selected command and starts the
+    # * mod==1 finds the currently selected command and starts the
     #   run from there.
+    # * mod==2 Is a looped run.
     def run_script(mod = 0)
         begin
             @window_notebook.set_selection(2)
@@ -179,8 +181,9 @@ class GUIMainEvent < GUIMain
             sync = Mutex.new
             @gauge_1.set_value(0)
             @run_box.clear
-            return if MessageDialog.new(self, "Are you certain that you want to begin\nrunning the script?", "ARM SHOW!", YES_NO).show_modal == ID_NO unless mod < 0     
-            if mod < 0
+            return if MessageDialog.new(self, "Are you certain that you want to begin\nrunning the script?", "ARM SHOW!", YES_NO).show_modal == ID_NO unless mod == -1
+
+            if mod == -1
                 log(1, "Beginning dry run")           
                 $run = Thread.new do
                     $script.dry_run($attr[:read_addr], [$attr[:delay], $attr[:fire_delay]]) do |prog, msg|
@@ -206,10 +209,30 @@ class GUIMainEvent < GUIMain
                     log(1, "Run Ended")
                     $run = nil
                 end
-            elsif mod > 0
+            elsif mod == 1
                 log(1, "Beginning run from command #{@script_display.get_selection}")
                 $run = Thread.new do
                     $script.run([$attr[:data_addr], $attr[:control_addr], $attr[:read_addr]], [$attr[:delay], $attr[:fire_delay]], @script_display.get_selection) do |prog, msg|
+                        sync.synchronize do
+                            @gauge_1.set_value(prog)
+                            @run_box.set_insertion_point_end
+                            @run_box.write_text("#{msg}\n")
+                        end
+                    end
+                    log(1, "Run Ended")
+                    $run = nil
+                end
+            elsif mod == 2
+                dlg = TextEntryDialog.new(self, "Please enter the number of times you want the script to loop.\n\nIf you make this number 0, the script will loop infinetly\n until you stop it manually")
+                if dlg.show_modal == ID_OK
+                    loop = dlg.get_value.to_i
+                else
+                    return
+                end
+
+                log(1, "Beginning run")
+                $run = Thread.new do
+                    $script.run([$attr[:data_addr], $attr[:control_addr], $attr[:read_addr]], [$attr[:delay], $attr[:fire_delay]], false, loop) do |prog, msg|
                         sync.synchronize do
                             @gauge_1.set_value(prog)
                             @run_box.set_insertion_point_end
@@ -465,7 +488,7 @@ class GUIMainEvent < GUIMain
         log(1, "Event copied.")
 		edit_event()
         $edit = false
-        event_subtype_selected()
+        event_subtype_selected() unless $attr[:reuse]
         add_event()
     end
 
@@ -474,7 +497,7 @@ class GUIMainEvent < GUIMain
         log(0, "Script told to stop.")
 		return unless $run
         log(1, "Stopping script.")
-        $run.kill
+        $run.kill!
         $run = nil
     end
 
