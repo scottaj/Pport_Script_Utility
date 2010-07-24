@@ -79,6 +79,8 @@
 					
 					<li><a href="#method-i-edit_group">#edit_group</a></li>
 					
+					<li><a href="#method-i-toggle_reuse">#toggle_reuse</a></li>
+					
 					<li><a href="#method-i-write_groups">#write_groups</a></li>
 					
 				</ul>
@@ -100,11 +102,9 @@
 				
 					<li class="file"><a href="./README.html">README</a></li>
 				
-					<li class="file"><a href="./README~.html">README~</a></li>
-				
 					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
 				
-					<li class="file"><a href="./Rakefile~.html">Rakefile~</a></li>
+					<li class="file"><a href="./TODO.html">TODO</a></li>
 				
 					<li class="file"><a href="./nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
 				
@@ -222,15 +222,18 @@ Initializes the configuration window.
 30:         <span class="ruby-ivar">@conf_hread_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-node">&quot;0x#{$attr[:read_addr].to_s(16)}&quot;</span>)
 31:         <span class="ruby-ivar">@conf_hdata_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-node">&quot;0x#{$attr[:data_addr].to_s(16)}&quot;</span>)
 32:         <span class="ruby-ivar">@conf_hcontrol_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-node">&quot;0x#{$attr[:control_addr].to_s(16)}&quot;</span>)
-33:         <span class="ruby-identifier">write_groups</span>()
-34: 
-35:         <span class="ruby-comment cmt"># Events</span>
-36:         <span class="ruby-identifier">evt_close</span>()                 {<span class="ruby-identifier">conf_exit</span>}
-37:         
-38:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_APPLY</span>)        {<span class="ruby-identifier">add_group</span>}
-39:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_CLEAR</span>)        {<span class="ruby-identifier">clear_group</span>}
-40:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@conf_edit_btn</span>)  {<span class="ruby-identifier">edit_group</span>}
-41:     <span class="ruby-keyword kw">end</span></pre>
+33:         <span class="ruby-ivar">@allow_reuse_chk</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:reuse</span>])
+34:         <span class="ruby-identifier">write_groups</span>()
+35: 
+36:         <span class="ruby-comment cmt"># Events</span>
+37:         <span class="ruby-identifier">evt_close</span>()                     {<span class="ruby-identifier">conf_exit</span>()}
+38:         
+39:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_APPLY</span>)            {<span class="ruby-identifier">add_group</span>()}
+40:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_CLEAR</span>)            {<span class="ruby-identifier">clear_group</span>()}
+41:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@conf_edit_btn</span>)      {<span class="ruby-identifier">edit_group</span>()}
+42: 
+43:         <span class="ruby-identifier">evt_checkbox</span>(<span class="ruby-ivar">@allow_reuse_chk</span>)  {<span class="ruby-identifier">toggle_reuse</span>()}
+44:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -270,30 +273,30 @@ the &#8220;Apply&#8221; button is pressed.
 					<div class="method-source-code"
 						id="add-group-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 63</span>
-63:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_group</span>()
-64:         <span class="ruby-identifier">group_name</span> = <span class="ruby-ivar">@conf_group_name_text</span>.<span class="ruby-identifier">get_value</span>
-65:         <span class="ruby-identifier">group_values</span> = <span class="ruby-ivar">@conf_group_values_text</span>.<span class="ruby-identifier">get_value</span>
-66: 
-67:         <span class="ruby-identifier">group_values</span> = <span class="ruby-identifier">expand_ranges</span>(<span class="ruby-identifier">group_values</span>)
-68:         <span class="ruby-keyword kw">begin</span>
-69:             <span class="ruby-identifier">errval</span> = <span class="ruby-keyword kw">nil</span>
-70:             <span class="ruby-identifier">group_values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
-71:                 <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>].<span class="ruby-identifier">each_value</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arr</span><span class="ruby-operator">|</span>
-72:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">val</span>)
-73:                         <span class="ruby-identifier">errval</span> = <span class="ruby-identifier">val</span>
-74:                         <span class="ruby-identifier">fail</span>
-75:                     <span class="ruby-keyword kw">end</span>
-76:                 <span class="ruby-keyword kw">end</span>
-77:             <span class="ruby-keyword kw">end</span>
-78:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">RuntimeError</span>
-79:             <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-node">&quot;Value #{errval} is already in use by another group!&quot;</span>,
-80:             <span class="ruby-value str">&quot;Error Creating Group&quot;</span>, <span class="ruby-constant">OK</span>).<span class="ruby-identifier">show_modal</span>
-81:             <span class="ruby-keyword kw">return</span>
-82:         <span class="ruby-keyword kw">end</span>
-83:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>][<span class="ruby-identifier">group_name</span>] = <span class="ruby-identifier">group_values</span>
-84:         <span class="ruby-identifier">write_groups</span>()
-85:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 66</span>
+66:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_group</span>()
+67:         <span class="ruby-identifier">group_name</span> = <span class="ruby-ivar">@conf_group_name_text</span>.<span class="ruby-identifier">get_value</span>
+68:         <span class="ruby-identifier">group_values</span> = <span class="ruby-ivar">@conf_group_values_text</span>.<span class="ruby-identifier">get_value</span>
+69: 
+70:         <span class="ruby-identifier">group_values</span> = <span class="ruby-identifier">expand_ranges</span>(<span class="ruby-identifier">group_values</span>)
+71:         <span class="ruby-keyword kw">begin</span>
+72:             <span class="ruby-identifier">errval</span> = <span class="ruby-keyword kw">nil</span>
+73:             <span class="ruby-identifier">group_values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+74:                 <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>].<span class="ruby-identifier">each_value</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arr</span><span class="ruby-operator">|</span>
+75:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arr</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">val</span>)
+76:                         <span class="ruby-identifier">errval</span> = <span class="ruby-identifier">val</span>
+77:                         <span class="ruby-identifier">fail</span>
+78:                     <span class="ruby-keyword kw">end</span>
+79:                 <span class="ruby-keyword kw">end</span>
+80:             <span class="ruby-keyword kw">end</span>
+81:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">RuntimeError</span>
+82:             <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-node">&quot;Value #{errval} is already in use by another group!&quot;</span>,
+83:             <span class="ruby-value str">&quot;Error Creating Group&quot;</span>, <span class="ruby-constant">OK</span>).<span class="ruby-identifier">show_modal</span>
+84:             <span class="ruby-keyword kw">return</span>
+85:         <span class="ruby-keyword kw">end</span>
+86:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>][<span class="ruby-identifier">group_name</span>] = <span class="ruby-identifier">group_values</span>
+87:         <span class="ruby-identifier">write_groups</span>()
+88:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -327,17 +330,17 @@ Clears the selected group from the list. Called when the
 					<div class="method-source-code"
 						id="clear-group-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 89</span>
-89:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_group</span>()
-90:         <span class="ruby-keyword kw">begin</span>
-91:             <span class="ruby-identifier">selection</span> = <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">get_string_selection</span>
-92:             <span class="ruby-identifier">selection</span> = <span class="ruby-identifier">selection</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;:&quot;</span>)[<span class="ruby-value">0</span>]
-93:             <span class="ruby-identifier">selection</span>.<span class="ruby-identifier">strip!</span>
-94:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>].<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">selection</span>)
-95:             <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">get_selection</span>)
-96:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span> <span class="ruby-comment cmt"># Raised if no group selected from list.</span>
-97:         <span class="ruby-keyword kw">end</span>
-98:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 92</span>
+ 92:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_group</span>()
+ 93:         <span class="ruby-keyword kw">begin</span>
+ 94:             <span class="ruby-identifier">selection</span> = <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">get_string_selection</span>
+ 95:             <span class="ruby-identifier">selection</span> = <span class="ruby-identifier">selection</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;:&quot;</span>)[<span class="ruby-value">0</span>]
+ 96:             <span class="ruby-identifier">selection</span>.<span class="ruby-identifier">strip!</span>
+ 97:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>].<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">selection</span>)
+ 98:             <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">get_selection</span>)
+ 99:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span> <span class="ruby-comment cmt"># Raised if no group selected from list.</span>
+100:         <span class="ruby-keyword kw">end</span>
+101:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -371,16 +374,16 @@ the close button is pressed.
 					<div class="method-source-code"
 						id="conf-exit-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 51</span>
-51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">conf_exit</span>()
-52:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:delay</span>] = <span class="ruby-ivar">@conf_delay_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_f</span>
-53:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:fire_delay</span>] = <span class="ruby-ivar">@conf_fire_delay_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_f</span>
-54:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:read_addr</span>] = <span class="ruby-ivar">@conf_hread_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)
-55:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:data_addr</span>] = <span class="ruby-ivar">@conf_hdata_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)
-56:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:control_addr</span>] = <span class="ruby-ivar">@conf_hcontrol_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)
-57:         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">show</span>
-58:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">destroy</span>
-59:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 54</span>
+54:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">conf_exit</span>()
+55:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:delay</span>] = <span class="ruby-ivar">@conf_delay_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_f</span>
+56:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:fire_delay</span>] = <span class="ruby-ivar">@conf_fire_delay_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_f</span>
+57:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:read_addr</span>] = <span class="ruby-ivar">@conf_hread_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)
+58:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:data_addr</span>] = <span class="ruby-ivar">@conf_hdata_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)
+59:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:control_addr</span>] = <span class="ruby-ivar">@conf_hcontrol_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">16</span>)
+60:         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">show</span>
+61:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">destroy</span>
+62:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -414,17 +417,58 @@ button is pressed.
 					<div class="method-source-code"
 						id="edit-group-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 102</span>
-102:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_group</span>()
-103:         <span class="ruby-keyword kw">begin</span>
-104:             <span class="ruby-identifier">selection</span> = <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">get_string_selection</span>
-105:             <span class="ruby-identifier">selection</span> = <span class="ruby-identifier">selection</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;:&quot;</span>)
-106:             <span class="ruby-ivar">@conf_group_name_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">selection</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">strip</span>)
-107:             <span class="ruby-ivar">@conf_group_values_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">selection</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">strip</span>)
-108:             <span class="ruby-identifier">clear_group</span>()
-109:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span> <span class="ruby-comment cmt"># Raised if no group selected from list.</span>
-110:         <span class="ruby-keyword kw">end</span>
-111:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 105</span>
+105:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_group</span>()
+106:         <span class="ruby-keyword kw">begin</span>
+107:             <span class="ruby-identifier">selection</span> = <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">get_string_selection</span>
+108:             <span class="ruby-identifier">selection</span> = <span class="ruby-identifier">selection</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;:&quot;</span>)
+109:             <span class="ruby-ivar">@conf_group_name_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">selection</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">strip</span>)
+110:             <span class="ruby-ivar">@conf_group_values_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">selection</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">strip</span>)
+111:             <span class="ruby-identifier">clear_group</span>()
+112:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span> <span class="ruby-comment cmt"># Raised if no group selected from list.</span>
+113:         <span class="ruby-keyword kw">end</span>
+114:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="toggle-reuse-method" class="method-detail ">
+				<a name="method-i-toggle_reuse"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">toggle_reuse</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Toggles ability to reuse group values in a script. Called when the Reuse
+chechbox is checked or unchecked.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="toggle-reuse-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 118</span>
+118:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">toggle_reuse</span>()
+119:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@allow_reuse_chk</span>.<span class="ruby-identifier">is_checked</span>
+120:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:reuse</span>] = <span class="ruby-keyword kw">true</span>
+121:         <span class="ruby-keyword kw">else</span>
+122:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:reuse</span>] = <span class="ruby-keyword kw">false</span>
+123:         <span class="ruby-keyword kw">end</span>
+124:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -457,11 +501,11 @@ Writes all current groups to the list.
 					<div class="method-source-code"
 						id="write-groups-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 44</span>
-44:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write_groups</span>()
-45:         <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">clear</span>
-46:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>].<span class="ruby-identifier">each_pair</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">group</span>, <span class="ruby-identifier">values</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-node">&quot;#{group}: #{neaten_numbers(values)}&quot;</span>, <span class="ruby-value">0</span>)}
-47:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/gui_conf_event.rb, line 47</span>
+47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write_groups</span>()
+48:         <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">clear</span>
+49:         <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>].<span class="ruby-identifier">each_pair</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">group</span>, <span class="ruby-identifier">values</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@conf_group_list</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-node">&quot;#{group}: #{neaten_numbers(values)}&quot;</span>, <span class="ruby-value">0</span>)}
+50:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

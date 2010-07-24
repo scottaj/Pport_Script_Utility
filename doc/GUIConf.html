@@ -90,11 +90,9 @@
 				
 					<li class="file"><a href="./README.html">README</a></li>
 				
-					<li class="file"><a href="./README~.html">README~</a></li>
-				
 					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
 				
-					<li class="file"><a href="./Rakefile~.html">Rakefile~</a></li>
+					<li class="file"><a href="./TODO.html">TODO</a></li>
 				
 					<li class="file"><a href="./nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
 				
@@ -167,7 +165,7 @@ recommended that this file is edited directly; instead, inherit from this
 class and extend its behaviour there.  
 </p>
 <p>
-Source file: gui_conf.xrc  Generated at: Sun Jun 13 21:55:19 -0400 2010
+Source file: gui_conf.xrc  Generated at: Fri Jul 23 13:07:11 -0600 2010
 </p>
 
 		</div>
@@ -271,11 +269,11 @@ Source file: gui_conf.xrc  Generated at: Sun Jun 13 21:55:19 -0400 2010
 				</div>
 			</div>
 			
-			<div id="conf-event-delay-attribute-method" class="method-detail">
-				<a name="conf_event_delay"></a>
+			<div id="conf-delay-text-attribute-method" class="method-detail">
+				<a name="conf_delay_text"></a>
 				
 				<div class="method-heading attribute-method-heading">
-					<span class="method-name">conf_event_delay</span><span
+					<span class="method-name">conf_delay_text</span><span
 						class="attribute-access-type">[R]</span>
 				</div>
 
@@ -286,11 +284,11 @@ Source file: gui_conf.xrc  Generated at: Sun Jun 13 21:55:19 -0400 2010
 				</div>
 			</div>
 			
-			<div id="conf-fire-delay-attribute-method" class="method-detail">
-				<a name="conf_fire_delay"></a>
+			<div id="conf-fire-delay-text-attribute-method" class="method-detail">
+				<a name="conf_fire_delay_text"></a>
 				
 				<div class="method-heading attribute-method-heading">
-					<span class="method-name">conf_fire_delay</span><span
+					<span class="method-name">conf_fire_delay_text</span><span
 						class="attribute-access-type">[R]</span>
 				</div>
 
@@ -406,6 +404,21 @@ Source file: gui_conf.xrc  Generated at: Sun Jun 13 21:55:19 -0400 2010
 				</div>
 			</div>
 			
+			<div id="allow-reuse-chk-attribute-method" class="method-detail">
+				<a name="allow_reuse_chk"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">allow_reuse_chk</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
 			<div id="static-line--attribute-method" class="method-detail">
 				<a name="static_line_1"></a>
 				
@@ -506,8 +519,8 @@ Source file: gui_conf.xrc  Generated at: Sun Jun 13 21:55:19 -0400 2010
 40:                 <span class="ruby-ivar">@conf_group_values_text</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_group_values_text&quot;</span>)
 41:                 <span class="ruby-ivar">@static_line_2</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;static_line_2&quot;</span>)
 42:                 <span class="ruby-ivar">@label_3</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;label_3&quot;</span>)
-43:                 <span class="ruby-ivar">@conf_delay_text</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_event_delay&quot;</span>)
-44:                 <span class="ruby-ivar">@conf_fire_delay_text</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_fire_delay&quot;</span>)
+43:                 <span class="ruby-ivar">@conf_delay_text</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_delay_text&quot;</span>)
+44:                 <span class="ruby-ivar">@conf_fire_delay_text</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_fire_delay_text&quot;</span>)
 45:                 <span class="ruby-ivar">@static_line_3</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;static_line_3&quot;</span>)
 46:                 <span class="ruby-ivar">@label_4</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;label_4&quot;</span>)
 47:                 <span class="ruby-ivar">@label_5</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;label_5&quot;</span>)
@@ -515,13 +528,14 @@ Source file: gui_conf.xrc  Generated at: Sun Jun 13 21:55:19 -0400 2010
 49:                 <span class="ruby-ivar">@conf_hread_text</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_hread_text&quot;</span>)
 50:                 <span class="ruby-ivar">@conf_hdata_text</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_hdata_text&quot;</span>)
 51:                 <span class="ruby-ivar">@conf_hcontrol_text</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_hcontrol_text&quot;</span>)
-52:                 <span class="ruby-ivar">@static_line_1</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;static_line_1&quot;</span>)
-53:                 <span class="ruby-ivar">@conf_group_list</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_group_list&quot;</span>)
-54:                 <span class="ruby-ivar">@conf_edit_btn</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_edit_btn&quot;</span>)
-55:                 <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">method_defined?</span> <span class="ruby-value str">&quot;on_init&quot;</span>
-56:                         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">on_init</span>()
-57:                 <span class="ruby-keyword kw">end</span>
-58:         <span class="ruby-keyword kw">end</span></pre>
+52:                 <span class="ruby-ivar">@allow_reuse_chk</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;allow_reuse_chk&quot;</span>)
+53:                 <span class="ruby-ivar">@static_line_1</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;static_line_1&quot;</span>)
+54:                 <span class="ruby-ivar">@conf_group_list</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_group_list&quot;</span>)
+55:                 <span class="ruby-ivar">@conf_edit_btn</span> = <span class="ruby-identifier">finder</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">&quot;conf_edit_btn&quot;</span>)
+56:                 <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">method_defined?</span> <span class="ruby-value str">&quot;on_init&quot;</span>
+57:                         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">on_init</span>()
+58:                 <span class="ruby-keyword kw">end</span>
+59:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

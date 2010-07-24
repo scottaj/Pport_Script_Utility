@@ -130,11 +130,9 @@
 				
 					<li class="file"><a href="./README.html">README</a></li>
 				
-					<li class="file"><a href="./README~.html">README~</a></li>
-				
 					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
 				
-					<li class="file"><a href="./Rakefile~.html">Rakefile~</a></li>
+					<li class="file"><a href="./TODO.html">TODO</a></li>
 				
 					<li class="file"><a href="./nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
 				
@@ -266,35 +264,36 @@ Initializes Events for the main <a href="GUI.html">GUI</a> window.
 49: 
 50:         <span class="ruby-comment cmt"># &quot;Run&quot; menu.</span>
 51:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@run_run</span>)                  {<span class="ruby-identifier">run_script</span>()}
-52:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@run_dryrun</span>)               {<span class="ruby-identifier">run_script</span>(<span class="ruby-value">1</span>)}
-53:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@run_run_from</span>)             {<span class="ruby-identifier">run_script</span>(<span class="ruby-value">1</span>)}
-54: 
-55:         <span class="ruby-comment cmt"># &quot;Tools&quot; menu.</span>
-56:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@tools_conf</span>)               {<span class="ruby-identifier">display_conf_window</span>()}
-57: 
-58:         <span class="ruby-comment cmt"># &quot;Help&quot; menu.</span>
-59:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-constant">ID_ABOUT</span>)                  {<span class="ruby-identifier">about</span>()}
-60:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@help_bug</span>)                 {<span class="ruby-identifier">report_bug</span>}
-61: 
-62:         <span class="ruby-comment cmt"># Other widgets.</span>
-63:         <span class="ruby-identifier">evt_choice</span>(<span class="ruby-ivar">@event_choice</span>)           {<span class="ruby-identifier">event_type_selected</span>()}
-64:         <span class="ruby-identifier">evt_choice</span>(<span class="ruby-ivar">@command_choice</span>)         {<span class="ruby-identifier">event_subtype_selected</span>()}
-65: 
-66:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_ADD</span>)                  {<span class="ruby-identifier">add_event</span>()}
-67:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@insert_btn</span>)             {<span class="ruby-identifier">add_event</span>(<span class="ruby-keyword kw">true</span>)}
-68: 
-69:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_UP</span>)                   {<span class="ruby-identifier">move_event</span>(<span class="ruby-value">1</span>)}
-70:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_DOWN</span>)                 {<span class="ruby-identifier">move_event</span>(<span class="ruby-value">1</span>)}
-71:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_DELETE</span>)               {<span class="ruby-identifier">delete_event</span>()}
-72:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@edit_btn</span>)               {<span class="ruby-identifier">edit_event</span>()} 
-73:         <span class="ruby-identifier">evt_listbox_dclick</span>(<span class="ruby-ivar">@script_display</span>) {<span class="ruby-identifier">copy_event</span>()}
-74: 
-75:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_STOP</span>)                 {<span class="ruby-identifier">stop_run</span>()}
-76:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@play_btn</span>)               {<span class="ruby-identifier">continue_run</span>()}
-77:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@pause_btn</span>)              {<span class="ruby-identifier">pause_run</span>()}
-78:           
-79:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Initialization complete&quot;</span>)
-80:     <span class="ruby-keyword kw">end</span></pre>
+52:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@run_run_from</span>)             {<span class="ruby-identifier">run_script</span>(<span class="ruby-value">1</span>)}
+53:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@run_loop</span>)                 {<span class="ruby-identifier">run_script</span>(<span class="ruby-value">2</span>)}
+54:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@run_dryrun</span>)               {<span class="ruby-identifier">run_script</span>(<span class="ruby-value">1</span>)}
+55: 
+56:         <span class="ruby-comment cmt"># &quot;Tools&quot; menu.</span>
+57:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@tools_conf</span>)               {<span class="ruby-identifier">display_conf_window</span>()}
+58: 
+59:         <span class="ruby-comment cmt"># &quot;Help&quot; menu.</span>
+60:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-constant">ID_ABOUT</span>)                  {<span class="ruby-identifier">about</span>()}
+61:         <span class="ruby-identifier">evt_menu</span>(<span class="ruby-ivar">@help_bug</span>)                 {<span class="ruby-identifier">report_bug</span>()}
+62: 
+63:         <span class="ruby-comment cmt"># Other widgets.</span>
+64:         <span class="ruby-identifier">evt_choice</span>(<span class="ruby-ivar">@event_choice</span>)           {<span class="ruby-identifier">event_type_selected</span>()}
+65:         <span class="ruby-identifier">evt_choice</span>(<span class="ruby-ivar">@command_choice</span>)         {<span class="ruby-identifier">event_subtype_selected</span>()}
+66: 
+67:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_ADD</span>)                  {<span class="ruby-identifier">add_event</span>()}
+68:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@insert_btn</span>)             {<span class="ruby-identifier">add_event</span>(<span class="ruby-keyword kw">true</span>)}
+69: 
+70:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_UP</span>)                   {<span class="ruby-identifier">move_event</span>(<span class="ruby-value">1</span>)}
+71:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_DOWN</span>)                 {<span class="ruby-identifier">move_event</span>(<span class="ruby-value">1</span>)}
+72:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_DELETE</span>)               {<span class="ruby-identifier">delete_event</span>()}
+73:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@edit_btn</span>)               {<span class="ruby-identifier">edit_event</span>()} 
+74:         <span class="ruby-identifier">evt_listbox_dclick</span>(<span class="ruby-ivar">@script_display</span>) {<span class="ruby-identifier">copy_event</span>()}
+75: 
+76:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-constant">ID_STOP</span>)                 {<span class="ruby-identifier">stop_run</span>()}
+77:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@play_btn</span>)               {<span class="ruby-identifier">continue_run</span>()}
+78:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@pause_btn</span>)              {<span class="ruby-identifier">pause_run</span>()}
+79:           
+80:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Initialization complete&quot;</span>)
+81:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -333,11 +332,11 @@ Diplays a dialog with program information.
 					<div class="method-source-code"
 						id="about-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 241</span>
-241:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">about</span>()
-242:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Displaying about dialog&quot;</span>)
-243:         <span class="ruby-constant">MyAboutBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">show</span>
-244:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 264</span>
+264:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">about</span>()
+265:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Displaying about dialog&quot;</span>)
+266:         <span class="ruby-constant">MyAboutBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">show</span>
+267:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -365,78 +364,80 @@ Diplays a dialog with program information.
 Adds an event to the script.
 </p>
 <p>
-*<em>pos</em>: an optional argument that gives a
+<em>pos</em>: an optional argument that gives a
 </p>
 <pre>
-             position to insert the event at, otherwise the event
-             is just added to the end of the script.</pre>
+            position to insert the event at, otherwise the event
+            is just added to the end of the script.</pre>
 					
 
 					
 					<div class="method-source-code"
 						id="add-event-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 309</span>
-309:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_event</span>(<span class="ruby-identifier">pos</span> = <span class="ruby-keyword kw">false</span>)
-310:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;Adding event #{&quot;at position#{pos}&quot; if pos}&quot;</span>)
-311:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$edit</span>
-312:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-node">&quot;Replacing previous command number #{$edit}&quot;</span>)
-313:             <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">$edit</span>
-314:             <span class="ruby-identifier">delete_event</span>(<span class="ruby-identifier">pos</span>)
-315:             <span class="ruby-identifier">$edit</span> = <span class="ruby-identifier">pos</span>
-316:         <span class="ruby-keyword kw">end</span>
-317:         
-318:         <span class="ruby-identifier">event</span> = <span class="ruby-keyword kw">nil</span>
-319:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Gathering event data&quot;</span>)
-320:         <span class="ruby-identifier">event_type</span> = <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">get_string_selection</span>
-321:         <span class="ruby-identifier">event_subtype</span> = <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">get_string_selection</span>
-322:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event_type</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/write/</span>)
-323:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Creating write event&quot;</span>)
-324:             <span class="ruby-keyword kw">begin</span>
-325:                 <span class="ruby-identifier">fail</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>][<span class="ruby-identifier">event_subtype</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>)) <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">511</span>
-326:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">WriteEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-identifier">event_subtype</span>, <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>)
-327:                 <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>)
-328:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">RuntimeError</span>
-329:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in add_event()&quot;</span>)
-330:                 <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Given value is invalid for this command.&quot;</span>,
-331:                 <span class="ruby-value str">&quot;Invalid Input!&quot;</span>, <span class="ruby-constant">OK</span>).<span class="ruby-identifier">show_modal</span>
-332:                 <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">clear</span>
-333:                 <span class="ruby-keyword kw">return</span>
-334:             <span class="ruby-keyword kw">end</span>
-335:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event_type</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/time/</span>)
-336:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Creating time event&quot;</span>)
-337:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event_subtype</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/for/</span>)
-338:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">WaitEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_f</span>)
-339:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event_subtype</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/until/</span>)
-340:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">TimeEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>)
-341:             <span class="ruby-keyword kw">end</span>
-342:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event_type</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/read/</span>)
-343:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Creating foreign event&quot;</span>)
-344:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event_subtype</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/change/</span>)
-345:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">ReadEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-value">1</span>)
-346:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event_subtype</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/value/</span>)
-347:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">ReadEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>)
-348:             <span class="ruby-keyword kw">end</span>
-349:         <span class="ruby-keyword kw">end</span>
-350: 
-351:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>
-352:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Adding event to script&quot;</span>)
-353:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pos</span>
-354:                 <span class="ruby-keyword kw">begin</span>
-355:                     <span class="ruby-identifier">pos</span> = <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">pos</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$edit</span>
-356:                     <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">add_event</span>(<span class="ruby-identifier">event</span>, <span class="ruby-identifier">pos</span>)
-357:                 <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
-358:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in add_event()&quot;</span>)
-359:                 <span class="ruby-keyword kw">end</span>
-360:             <span class="ruby-keyword kw">else</span>
-361:                 <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">add_event</span>(<span class="ruby-identifier">event</span>)
-362:             <span class="ruby-keyword kw">end</span>
-363:             <span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">clear</span>()
-364:             <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
-365:             <span class="ruby-identifier">event_subtype_selected</span>()
-366:         <span class="ruby-keyword kw">end</span>
-367:         <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
-368:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 333</span>
+333:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_event</span>(<span class="ruby-identifier">pos</span> = <span class="ruby-keyword kw">false</span>)
+334:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;Adding event #{&quot;at position#{pos}&quot; if pos}&quot;</span>)
+335:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$edit</span>
+336:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-node">&quot;Replacing previous command number #{$edit}&quot;</span>)
+337:             <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">$edit</span>
+338:             <span class="ruby-identifier">delete_event</span>(<span class="ruby-identifier">pos</span>)
+339:             <span class="ruby-identifier">$edit</span> = <span class="ruby-identifier">pos</span>
+340:         <span class="ruby-keyword kw">end</span>
+341:         
+342:         <span class="ruby-identifier">event</span> = <span class="ruby-keyword kw">nil</span>
+343:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Gathering event data&quot;</span>)
+344:         <span class="ruby-identifier">event_type</span> = <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">get_string_selection</span>
+345:         <span class="ruby-identifier">event_subtype</span> = <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">get_string_selection</span>
+346:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event_type</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/write/</span>)
+347:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Creating write event&quot;</span>)
+348:             <span class="ruby-keyword kw">begin</span>
+349:                 <span class="ruby-identifier">fail</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:reuse</span>]
+350:                 <span class="ruby-identifier">fail</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">not</span> (<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>][<span class="ruby-identifier">event_subtype</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>))
+351:                 <span class="ruby-identifier">fail</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">511</span>
+352:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">WriteEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-identifier">event_subtype</span>, <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>)
+353:                 <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>)
+354:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">RuntimeError</span>
+355:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in add_event()&quot;</span>)
+356:                 <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Given value is invalid for this command.&quot;</span>,
+357:                 <span class="ruby-value str">&quot;Invalid Input!&quot;</span>, <span class="ruby-constant">OK</span>).<span class="ruby-identifier">show_modal</span>
+358:                 <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">clear</span>
+359:                 <span class="ruby-keyword kw">return</span>
+360:             <span class="ruby-keyword kw">end</span>
+361:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event_type</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/time/</span>)
+362:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Creating time event&quot;</span>)
+363:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event_subtype</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/for/</span>)
+364:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">WaitEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_f</span>)
+365:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event_subtype</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/until/</span>)
+366:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">TimeEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>)
+367:             <span class="ruby-keyword kw">end</span>
+368:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event_type</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/read/</span>)
+369:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Creating foreign event&quot;</span>)
+370:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event_subtype</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/change/</span>)
+371:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">ReadEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-value">1</span>)
+372:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event_subtype</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/value/</span>)
+373:                 <span class="ruby-identifier">event</span> = <span class="ruby-constant">ReadEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">get_value</span>, <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>)
+374:             <span class="ruby-keyword kw">end</span>
+375:         <span class="ruby-keyword kw">end</span>
+376: 
+377:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>
+378:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Adding event to script&quot;</span>)
+379:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pos</span>
+380:                 <span class="ruby-keyword kw">begin</span>
+381:                     <span class="ruby-identifier">pos</span> = <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">pos</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$edit</span>
+382:                     <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">add_event</span>(<span class="ruby-identifier">event</span>, <span class="ruby-identifier">pos</span>)
+383:                 <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
+384:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in add_event()&quot;</span>)
+385:                 <span class="ruby-keyword kw">end</span>
+386:             <span class="ruby-keyword kw">else</span>
+387:                 <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">add_event</span>(<span class="ruby-identifier">event</span>)
+388:             <span class="ruby-keyword kw">end</span>
+389:             <span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">clear</span>()
+390:             <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
+391:             <span class="ruby-identifier">event_subtype_selected</span>()
+392:         <span class="ruby-keyword kw">end</span>
+393:         <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
+394:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -470,15 +471,15 @@ the
 					<div class="method-source-code"
 						id="close-prog-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 96</span>
- 96:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close_prog</span>()
- 97:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Program closing&quot;</span>)
- 98:         <span class="ruby-identifier">new_script</span>()
- 99:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Writing log to file&quot;</span>)
-100:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;logs/#{Time.now.month}-#{Time.now.day}-#{Time.now.year}.log&quot;</span>, <span class="ruby-value str">'w'</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;.logs/#{Time.now.month}-#{Time.now.day}-#{Time.now.year}.log&quot;</span>)
-101:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;logs/#{Time.now.month}-#{Time.now.day}-#{Time.now.year}.log&quot;</span>, <span class="ruby-value str">'a'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">log_out</span><span class="ruby-operator">|</span> <span class="ruby-identifier">log_out</span>.<span class="ruby-identifier">write</span>(<span class="ruby-ivar">@log_text</span>.<span class="ruby-identifier">get_value</span>)}
-102:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">destroy</span>
-103:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 97</span>
+ 97:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close_prog</span>()
+ 98:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Program closing&quot;</span>)
+ 99:         <span class="ruby-identifier">new_script</span>()
+100:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Writing log to file&quot;</span>)
+101:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;logs/#{Time.now.month}-#{Time.now.day}-#{Time.now.year}.log&quot;</span>, <span class="ruby-value str">'w'</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;.logs/#{Time.now.month}-#{Time.now.day}-#{Time.now.year}.log&quot;</span>)
+102:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;logs/#{Time.now.month}-#{Time.now.day}-#{Time.now.year}.log&quot;</span>, <span class="ruby-value str">'a'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">log_out</span><span class="ruby-operator">|</span> <span class="ruby-identifier">log_out</span>.<span class="ruby-identifier">write</span>(<span class="ruby-ivar">@log_text</span>.<span class="ruby-identifier">get_value</span>)}
+103:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">destroy</span>
+104:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -511,14 +512,14 @@ Restarts any paused script.
 					<div class="method-source-code"
 						id="continue-run-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 479</span>
-479:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">continue_run</span>()
-480:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script told to restart.&quot;</span>)
-481:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$run</span>
-482:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script restarting.&quot;</span>)
-483:         <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">pause</span> = <span class="ruby-keyword kw">false</span>
-484:         <span class="ruby-identifier">$run</span>.<span class="ruby-identifier">run</span>
-485:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 505</span>
+505:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">continue_run</span>()
+506:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script told to restart.&quot;</span>)
+507:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$run</span>
+508:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script restarting.&quot;</span>)
+509:         <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">pause</span> = <span class="ruby-keyword kw">false</span>
+510:         <span class="ruby-identifier">$run</span>.<span class="ruby-identifier">run</span>
+511:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -551,14 +552,14 @@ Copies an event to the end of the list.
 					<div class="method-source-code"
 						id="copy-event-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 461</span>
-461:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">copy_event</span>()
-462:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Event copied.&quot;</span>)
-463:                 <span class="ruby-identifier">edit_event</span>()
-464:         <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
-465:         <span class="ruby-identifier">event_subtype_selected</span>()
-466:         <span class="ruby-identifier">add_event</span>()
-467:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 487</span>
+487:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">copy_event</span>()
+488:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Event copied.&quot;</span>)
+489:                 <span class="ruby-identifier">edit_event</span>()
+490:         <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
+491:         <span class="ruby-identifier">event_subtype_selected</span>() <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:reuse</span>]
+492:         <span class="ruby-identifier">add_event</span>()
+493:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -588,38 +589,45 @@ Removes an event from the script.
 <p>
 <em>pos</em>:
 </p>
-<pre>
-   * If pos is false or nil the currently selected event is deleted.
-   * If pos is a number then the script item at that position is deleted.</pre>
+<ul>
+<li><p>
+If pos is false or nil the currently selected event is deleted.
+</p>
+</li>
+<li><p>
+If pos is a number then the script item at that position is deleted.
+</p>
+</li>
+</ul>
 					
 
 					
 					<div class="method-source-code"
 						id="delete-event-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 397</span>
-397:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_event</span>(<span class="ruby-identifier">pos</span> = <span class="ruby-keyword kw">false</span>)
-398:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Deleting event&quot;</span>)
-399:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pos</span>
-400:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-node">&quot;Deleting event at position #{pos}&quot;</span>)
-401:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">num</span><span class="ruby-operator">|</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">script</span>[<span class="ruby-identifier">pos</span>].<span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>]}
-402:             <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">remove_event</span>(<span class="ruby-identifier">pos</span>)
-403:             <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
-404:         <span class="ruby-keyword kw">else</span>
-405:             <span class="ruby-keyword kw">begin</span>
-406:                 <span class="ruby-identifier">to_delete</span> = <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span>
-407:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
-408:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in delete_event()&quot;</span>)
-409:                 <span class="ruby-keyword kw">return</span>
-410:             <span class="ruby-keyword kw">end</span>
-411:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Deleting selected event&quot;</span>)
-412:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">num</span><span class="ruby-operator">|</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">script</span>[<span class="ruby-identifier">to_delete</span>].<span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>]}
-413:             <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">remove_event</span>(<span class="ruby-identifier">to_delete</span>)
-414:             <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
-415:             
-416:         <span class="ruby-keyword kw">end</span>
-417:         <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
-418:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 423</span>
+423:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_event</span>(<span class="ruby-identifier">pos</span> = <span class="ruby-keyword kw">false</span>)
+424:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Deleting event&quot;</span>)
+425:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pos</span>
+426:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-node">&quot;Deleting event at position #{pos}&quot;</span>)
+427:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">num</span><span class="ruby-operator">|</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">script</span>[<span class="ruby-identifier">pos</span>].<span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>]}
+428:             <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">remove_event</span>(<span class="ruby-identifier">pos</span>)
+429:             <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
+430:         <span class="ruby-keyword kw">else</span>
+431:             <span class="ruby-keyword kw">begin</span>
+432:                 <span class="ruby-identifier">to_delete</span> = <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span>
+433:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
+434:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in delete_event()&quot;</span>)
+435:                 <span class="ruby-keyword kw">return</span>
+436:             <span class="ruby-keyword kw">end</span>
+437:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Deleting selected event&quot;</span>)
+438:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">num</span><span class="ruby-operator">|</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">script</span>[<span class="ruby-identifier">to_delete</span>].<span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>]}
+439:             <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">remove_event</span>(<span class="ruby-identifier">to_delete</span>)
+440:             <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
+441:             
+442:         <span class="ruby-keyword kw">end</span>
+443:         <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
+444:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -652,14 +660,14 @@ Hides the main window and displays the configuration window.
 					<div class="method-source-code"
 						id="display-conf-window-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 232</span>
-232:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">display_conf_window</span>()
-233:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Opening configuration window&quot;</span>)
-234:         <span class="ruby-constant">GUIConfEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">show</span>
-235:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Hiding main window&quot;</span>)
-236:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hide</span>
-237:         <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">modified</span> = <span class="ruby-keyword kw">true</span>
-238:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 255</span>
+255:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">display_conf_window</span>()
+256:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Opening configuration window&quot;</span>)
+257:         <span class="ruby-constant">GUIConfEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">show</span>
+258:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Hiding main window&quot;</span>)
+259:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hide</span>
+260:         <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">modified</span> = <span class="ruby-keyword kw">true</span>
+261:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -692,45 +700,45 @@ Edits an event in the script.
 					<div class="method-source-code"
 						id="edit-event-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 421</span>
-421:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_event</span>()
-422:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Editing current event&quot;</span>)
-423:         <span class="ruby-keyword kw">begin</span>
-424:             <span class="ruby-identifier">$edit</span> = <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span>
-425:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
-426:             <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
-427:             <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in edit_event()&quot;</span>)
-428:             <span class="ruby-keyword kw">return</span>
-429:         <span class="ruby-keyword kw">end</span>
-430:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$edit</span>
-431:             <span class="ruby-identifier">to_edit</span> = <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">script</span>[<span class="ruby-identifier">$edit</span>]
-432:             
-433:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WriteEvent</span>)
-434:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Editing write event&quot;</span>)
-435:                 <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Write Event&quot;</span>)
-436:                 <span class="ruby-identifier">event_type_selected</span>()
-437:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>])
-438:                 <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_s</span>)
-439:                 <span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">comment</span>)
-440:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
-441:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Editing time event&quot;</span>)
-442:                 <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Time Event&quot;</span>)
-443:                 <span class="ruby-identifier">event_type_selected</span>()
-444:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Pause for time&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>)
-445:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Pause until time&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
-446:                 <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>)
-447:                 <span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">comment</span>)
-448:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">ReadEvent</span>)
-449:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Editing read event&quot;</span>)
-450:                 <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Read Event&quot;</span>)
-451:                 <span class="ruby-identifier">event_type_selected</span>()
-452:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Wait for read port to have specific value&quot;</span>)
-453:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Wait for read port to change&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-454:                 <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-455:                 <span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">comment</span>)
-456:             <span class="ruby-keyword kw">end</span>
-457:         <span class="ruby-keyword kw">end</span>
-458:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 447</span>
+447:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_event</span>()
+448:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Editing current event&quot;</span>)
+449:         <span class="ruby-keyword kw">begin</span>
+450:             <span class="ruby-identifier">$edit</span> = <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span>
+451:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
+452:             <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
+453:             <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in edit_event()&quot;</span>)
+454:             <span class="ruby-keyword kw">return</span>
+455:         <span class="ruby-keyword kw">end</span>
+456:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$edit</span>
+457:             <span class="ruby-identifier">to_edit</span> = <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">script</span>[<span class="ruby-identifier">$edit</span>]
+458:             
+459:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WriteEvent</span>)
+460:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Editing write event&quot;</span>)
+461:                 <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Write Event&quot;</span>)
+462:                 <span class="ruby-identifier">event_type_selected</span>()
+463:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>])
+464:                 <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_s</span>)
+465:                 <span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">comment</span>)
+466:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
+467:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Editing time event&quot;</span>)
+468:                 <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Time Event&quot;</span>)
+469:                 <span class="ruby-identifier">event_type_selected</span>()
+470:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Pause for time&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>)
+471:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Pause until time&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
+472:                 <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>)
+473:                 <span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">comment</span>)
+474:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">ReadEvent</span>)
+475:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Editing read event&quot;</span>)
+476:                 <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Read Event&quot;</span>)
+477:                 <span class="ruby-identifier">event_type_selected</span>()
+478:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Wait for read port to have specific value&quot;</span>)
+479:                 <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">set_string_selection</span>(<span class="ruby-value str">&quot;Wait for read port to change&quot;</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+480:                 <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">value</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+481:                 <span class="ruby-ivar">@comment_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">to_edit</span>.<span class="ruby-identifier">comment</span>)
+482:             <span class="ruby-keyword kw">end</span>
+483:         <span class="ruby-keyword kw">end</span>
+484:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -763,29 +771,30 @@ Fills in command values for external events when a group is selected.
 					<div class="method-source-code"
 						id="event-subtype-selected-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 281</span>
-281:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">event_subtype_selected</span>()
-282:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Event subtype selected&quot;</span>)
-283:         <span class="ruby-keyword kw">begin</span>
-284:             <span class="ruby-identifier">choice</span> = <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">get_string_selection</span>
-285:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">get_string_selection</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/write/</span>)
-286:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Looking for group auto-value&quot;</span>)
-287:                 <span class="ruby-identifier">group</span> = <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>][<span class="ruby-identifier">choice</span>]
-288:                 <span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">nil</span>
-289:                 <span class="ruby-identifier">group</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> = <span class="ruby-identifier">val</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">val</span>)}
-290:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
-291:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-node">&quot;Auto-value #{value} found&quot;</span>)
-292:                     <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>)
-293:                 <span class="ruby-keyword kw">else</span>
-294:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;No value found&quot;</span>)
-295:                     <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;No free values are availible for this group!&quot;</span>,
-296:                     <span class="ruby-value str">&quot;Group Empty&quot;</span>, <span class="ruby-constant">OK</span>).<span class="ruby-identifier">show_modal</span>
-297:                 <span class="ruby-keyword kw">end</span>
-298:             <span class="ruby-keyword kw">end</span>
-299:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
-300:             <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in event_subtype_selected()&quot;</span>)
-301:         <span class="ruby-keyword kw">end</span>
-302:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 304</span>
+304:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">event_subtype_selected</span>()
+305:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Event subtype selected&quot;</span>)
+306:         <span class="ruby-keyword kw">begin</span>
+307:             <span class="ruby-identifier">choice</span> = <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">get_string_selection</span>
+308:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">get_string_selection</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/write/</span>)
+309:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Looking for group auto-value&quot;</span>)
+310:                 <span class="ruby-identifier">group</span> = <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>][<span class="ruby-identifier">choice</span>]
+311:                 <span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">nil</span>
+312:                 <span class="ruby-identifier">group</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span> <span class="ruby-identifier">value</span> = <span class="ruby-identifier">val</span> <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:used</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">val</span>)}
+313:                 <span class="ruby-identifier">value</span> = <span class="ruby-identifier">group</span>[<span class="ruby-value">0</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:reuse</span>] <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">not</span> <span class="ruby-identifier">value</span>
+314:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
+315:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-node">&quot;Auto-value #{value} found&quot;</span>)
+316:                     <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>)
+317:                 <span class="ruby-keyword kw">else</span>
+318:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;No value found&quot;</span>)
+319:                     <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;No free values are availible for this group!&quot;</span>,
+320:                     <span class="ruby-value str">&quot;Group Empty&quot;</span>, <span class="ruby-constant">OK</span>).<span class="ruby-identifier">show_modal</span>
+321:                 <span class="ruby-keyword kw">end</span>
+322:             <span class="ruby-keyword kw">end</span>
+323:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
+324:             <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in event_subtype_selected()&quot;</span>)
+325:         <span class="ruby-keyword kw">end</span>
+326:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -818,31 +827,31 @@ Sets sub events to the appropriate values for the event type selected.
 					<div class="method-source-code"
 						id="event-type-selected-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 255</span>
-255:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">event_type_selected</span>()
-256:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Event type selected&quot;</span>)
-257:         <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">clear</span>
-258:         <span class="ruby-identifier">choice</span> = <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">get_string_selection</span>
-259:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">choice</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/write/</span>)
-260:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Write event selected&quot;</span>)
-261:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">clear</span>
-262:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>].<span class="ruby-identifier">each_key</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">group_name</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-identifier">group_name</span>)}
-263:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">choice</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/time/</span>)
-264:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Time based event selected&quot;</span>)
-265:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">clear</span>
-266:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Pause for time&quot;</span>)
-267:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Pause until time&quot;</span>)
-268:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">choice</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/read/</span>)
-269:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Read event selected&quot;</span>)
-270:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">clear</span>
-271:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Wait for read port to change&quot;</span>)
-272:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Wait for read port to have specific value&quot;</span>)
-273:         <span class="ruby-keyword kw">else</span>
-274:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Other selected&quot;</span>)
-275:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">clear</span>
-276:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Subtype&quot;</span>)
-277:         <span class="ruby-keyword kw">end</span>
-278:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 278</span>
+278:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">event_type_selected</span>()
+279:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Event type selected&quot;</span>)
+280:         <span class="ruby-ivar">@data_text</span>.<span class="ruby-identifier">clear</span>
+281:         <span class="ruby-identifier">choice</span> = <span class="ruby-ivar">@event_choice</span>.<span class="ruby-identifier">get_string_selection</span>
+282:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">choice</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/write/</span>)
+283:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Write event selected&quot;</span>)
+284:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">clear</span>
+285:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:groups</span>].<span class="ruby-identifier">each_key</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">group_name</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-identifier">group_name</span>)}
+286:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">choice</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/time/</span>)
+287:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Time based event selected&quot;</span>)
+288:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">clear</span>
+289:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Pause for time&quot;</span>)
+290:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Pause until time&quot;</span>)
+291:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">choice</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/read/</span>)
+292:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Read event selected&quot;</span>)
+293:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">clear</span>
+294:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Wait for read port to change&quot;</span>)
+295:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Wait for read port to have specific value&quot;</span>)
+296:         <span class="ruby-keyword kw">else</span>
+297:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Other selected&quot;</span>)
+298:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">clear</span>
+299:             <span class="ruby-ivar">@command_choice</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot;Subtype&quot;</span>)
+300:         <span class="ruby-keyword kw">end</span>
+301:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -870,13 +879,13 @@ Sets sub events to the appropriate values for the event type selected.
 Writes a log message to the screen on the log tab.
 </p>
 <p>
-*<em>level</em>: An integer, either 0, 1, or 2 which correspond respectivly
+<em>level</em>: An integer, either 0, 1, or 2 which correspond respectivly
 </p>
 <pre>
                &quot;low&quot;, &quot;normal&quot;, and &quot;high&quot; priority messages.
 </pre>
 <p>
-*<em>message</em>: A log message as a string.
+<em>message</em>: A log message as a string.
 </p>
 					
 
@@ -884,12 +893,12 @@ Writes a log message to the screen on the log tab.
 					<div class="method-source-code"
 						id="log-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 88</span>
-88:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">log</span>(<span class="ruby-identifier">level</span>, <span class="ruby-identifier">message</span>)
-89:         <span class="ruby-identifier">levels</span> = [<span class="ruby-value str">&quot;Low&quot;</span>, <span class="ruby-value str">&quot;Normal&quot;</span>, <span class="ruby-value str">&quot;High&quot;</span>]
-90:         <span class="ruby-ivar">@log_text</span>.<span class="ruby-identifier">set_insertion_point_end</span>
-91:         <span class="ruby-ivar">@log_text</span>.<span class="ruby-identifier">write_text</span>(<span class="ruby-node">&quot;#{Time.now}: Urgency level #{levels[level]} -- #{message}\n\r&quot;</span>)
-92:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 89</span>
+89:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">log</span>(<span class="ruby-identifier">level</span>, <span class="ruby-identifier">message</span>)
+90:         <span class="ruby-identifier">levels</span> = [<span class="ruby-value str">&quot;Low&quot;</span>, <span class="ruby-value str">&quot;Normal&quot;</span>, <span class="ruby-value str">&quot;High&quot;</span>]
+91:         <span class="ruby-ivar">@log_text</span>.<span class="ruby-identifier">set_insertion_point_end</span>
+92:         <span class="ruby-ivar">@log_text</span>.<span class="ruby-identifier">write_text</span>(<span class="ruby-node">&quot;#{Time.now}: Urgency level #{levels[level]} -- #{message}\n\r&quot;</span>)
+93:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -921,30 +930,38 @@ Moves an event up or down in the script.
 </p>
 <pre>
             
-            *If dir is negative then the selected item is
-            moved up &lt;i&gt;dir&lt;/i&gt; places.
-            *If dir is positive then the selected item is
-            moved down &lt;i&gt;dir&lt;/i&gt; places.</pre>
+</pre>
+<ul>
+<li><p>
+If dir is negative then the selected item is moved up <em>dir</em> places.
+</p>
+</li>
+<li><p>
+If dir is positive then the selected item is moved down <em>dir</em>
+places.
+</p>
+</li>
+</ul>
 					
 
 					
 					<div class="method-source-code"
 						id="move-event-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 378</span>
-378:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">move_event</span>(<span class="ruby-identifier">dir</span>)
-379:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;Moving event #{&quot;up&quot; if dir&lt;0}#{&quot;down&quot; if dir&gt;0}&quot;</span>)
-380:         <span class="ruby-keyword kw">begin</span>
-381:             <span class="ruby-identifier">to_move</span> = <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span>
-382:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
-383:             <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in move_event()&quot;</span>)
-384:             <span class="ruby-keyword kw">return</span>
-385:         <span class="ruby-keyword kw">end</span>
-386:         <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">move_event</span>(<span class="ruby-identifier">to_move</span>, <span class="ruby-identifier">dir</span>)
-387:         <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
-388:         <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">set_selection</span>(<span class="ruby-identifier">to_move</span><span class="ruby-operator">+</span><span class="ruby-identifier">dir</span>)
-389:         <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
-390:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 404</span>
+404:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">move_event</span>(<span class="ruby-identifier">dir</span>)
+405:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;Moving event #{&quot;up&quot; if dir&lt;0}#{&quot;down&quot; if dir&gt;0}&quot;</span>)
+406:         <span class="ruby-keyword kw">begin</span>
+407:             <span class="ruby-identifier">to_move</span> = <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span>
+408:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
+409:             <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in move_event()&quot;</span>)
+410:             <span class="ruby-keyword kw">return</span>
+411:         <span class="ruby-keyword kw">end</span>
+412:         <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">move_event</span>(<span class="ruby-identifier">to_move</span>, <span class="ruby-identifier">dir</span>)
+413:         <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
+414:         <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">set_selection</span>(<span class="ruby-identifier">to_move</span><span class="ruby-operator">+</span><span class="ruby-identifier">dir</span>)
+415:         <span class="ruby-identifier">$edit</span> = <span class="ruby-keyword kw">false</span>
+416:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -977,22 +994,22 @@ Creates a new script, first prompting user to save the current script.
 					<div class="method-source-code"
 						id="new-script-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 106</span>
-106:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_script</span>()
-107:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Checking save status&quot;</span>)
-108:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">modified</span>
-109:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Launching save prompt&quot;</span>)
-110:             <span class="ruby-identifier">prompt</span> = <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Would you like to save?&quot;</span>,
-111:                 <span class="ruby-value str">&quot;UNSAVED CHANGES!&quot;</span>, <span class="ruby-constant">YES_NO</span>)
-112:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prompt</span>.<span class="ruby-identifier">show_modal</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ID_YES</span>
-113:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Save prompt accepted&quot;</span>)
-114:                 <span class="ruby-identifier">save_script</span>()
-115:             <span class="ruby-keyword kw">end</span>
-116:         <span class="ruby-keyword kw">end</span>
-117:         <span class="ruby-identifier">$script</span> = <span class="ruby-constant">Script</span>.<span class="ruby-identifier">new</span>
-118:         <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
-119:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Blank script created&quot;</span>)
-120:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 107</span>
+107:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_script</span>()
+108:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Checking save status&quot;</span>)
+109:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">modified</span>
+110:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Launching save prompt&quot;</span>)
+111:             <span class="ruby-identifier">prompt</span> = <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Would you like to save?&quot;</span>,
+112:                 <span class="ruby-value str">&quot;UNSAVED CHANGES!&quot;</span>, <span class="ruby-constant">YES_NO</span>)
+113:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prompt</span>.<span class="ruby-identifier">show_modal</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ID_YES</span>
+114:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Save prompt accepted&quot;</span>)
+115:                 <span class="ruby-identifier">save_script</span>()
+116:             <span class="ruby-keyword kw">end</span>
+117:         <span class="ruby-keyword kw">end</span>
+118:         <span class="ruby-identifier">$script</span> = <span class="ruby-constant">Script</span>.<span class="ruby-identifier">new</span>
+119:         <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
+120:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Blank script created&quot;</span>)
+121:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1025,24 +1042,26 @@ Opens a previously saved script
 					<div class="method-source-code"
 						id="open-script-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 123</span>
-123:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open_script</span>()
-124:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Opening load dialog&quot;</span>)
-125:         <span class="ruby-identifier">dlg</span> = <span class="ruby-constant">FileDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Choose a file&quot;</span>, <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">getwd</span>(), <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-value str">&quot;Pport Script (*.scp)|*.scp&quot;</span>, <span class="ruby-constant">OPEN</span>)
-126:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">show_modal</span>() <span class="ruby-operator">==</span> <span class="ruby-constant">ID_OK</span>
-127:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;File selected&quot;</span>)
-128:             <span class="ruby-identifier">file</span> = <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">get_path</span>
-129:             <span class="ruby-keyword kw">begin</span>
-130:                 <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value str">'r'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">fin</span><span class="ruby-operator">|</span> <span class="ruby-identifier">$script</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">fin</span>)}
-131:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script loaded&quot;</span>)
-132:                 <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{file}.atr&quot;</span>, <span class="ruby-value str">'r'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">fin</span><span class="ruby-operator">|</span> <span class="ruby-identifier">$attr</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">fin</span>)}
-133:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Attributes loaded&quot;</span>)
-134:             <span class="ruby-keyword kw">rescue</span>
-135:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in open_script()&quot;</span>)
-136:             <span class="ruby-keyword kw">end</span>
-137:         <span class="ruby-keyword kw">end</span>
-138:         <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
-139:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 124</span>
+124:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open_script</span>()
+125:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Opening load dialog&quot;</span>)
+126:         <span class="ruby-identifier">dlg</span> = <span class="ruby-constant">FileDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Choose a file&quot;</span>, <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">getwd</span>(), <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-value str">&quot;Pport Script (*.scp)|*.scp&quot;</span>, <span class="ruby-constant">OPEN</span>)
+127:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">show_modal</span>() <span class="ruby-operator">==</span> <span class="ruby-constant">ID_OK</span>
+128:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;File selected&quot;</span>)
+129:             <span class="ruby-identifier">file</span> = <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">get_path</span>
+130:             <span class="ruby-keyword kw">begin</span>
+131:                 <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file</span>, <span class="ruby-value str">'r'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fin</span><span class="ruby-operator">|</span>
+132:                 <span class="ruby-identifier">data</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">fin</span>)
+133:                 <span class="ruby-identifier">$script</span> = <span class="ruby-identifier">data</span>[<span class="ruby-value">0</span>]
+134:                 <span class="ruby-identifier">$attr</span> = <span class="ruby-identifier">data</span>[<span class="ruby-value">1</span>]
+135:             <span class="ruby-keyword kw">end</span>
+136:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script loaded&quot;</span>)
+137:             <span class="ruby-keyword kw">rescue</span>
+138:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in open_script()&quot;</span>)
+139:             <span class="ruby-keyword kw">end</span>
+140:         <span class="ruby-keyword kw">end</span>
+141:         <span class="ruby-identifier">populate_list</span>(<span class="ruby-ivar">@script_display</span>)
+142:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1076,13 +1095,13 @@ still finish.
 					<div class="method-source-code"
 						id="pause-run-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 489</span>
-489:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pause_run</span>()
-490:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script told to pause.&quot;</span>)
-491:                 <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$run</span>
-492:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script pausing.&quot;</span>)
-493:         <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">pause</span> = <span class="ruby-keyword kw">true</span>
-494:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 515</span>
+515:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pause_run</span>()
+516:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script told to pause.&quot;</span>)
+517:                 <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$run</span>
+518:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script pausing.&quot;</span>)
+519:         <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">pause</span> = <span class="ruby-keyword kw">true</span>
+520:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1115,13 +1134,13 @@ Displays the bug report creation dialog.
 					<div class="method-source-code"
 						id="report-bug-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 247</span>
-247:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">report_bug</span>()
-248:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Displaying bug report dialog&quot;</span>)
-249:         <span class="ruby-constant">GUIBugEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">show</span>
-250:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Hiding main window&quot;</span>)
-251:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hide</span>
-252:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 270</span>
+270:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">report_bug</span>()
+271:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Displaying bug report dialog&quot;</span>)
+272:         <span class="ruby-constant">GUIBugEvent</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">show</span>
+273:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Hiding main window&quot;</span>)
+274:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hide</span>
+275:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1154,7 +1173,7 @@ started:
 </p>
 <ul>
 <li><p>
-mod<0 is a dry run where no data is output
+mod==-1 is a dry run where no data is output
 </p>
 </li>
 <li><p>
@@ -1162,7 +1181,11 @@ mod==0 is a normal run starting from the beginning of the script
 </p>
 </li>
 <li><p>
-mod>0 finds the currently selected command and starts the run from there.
+mod==1 finds the currently selected command and starts the run from there.
+</p>
+</li>
+<li><p>
+mod==2 Is a looped run.
 </p>
 </li>
 </ul>
@@ -1172,62 +1195,83 @@ mod>0 finds the currently selected command and starts the run from there.
 					<div class="method-source-code"
 						id="run-script-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 175</span>
-175:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_script</span>(<span class="ruby-identifier">mod</span> = <span class="ruby-value">0</span>)
-176:         <span class="ruby-keyword kw">begin</span>
-177:             <span class="ruby-ivar">@window_notebook</span>.<span class="ruby-identifier">set_selection</span>(<span class="ruby-value">2</span>)
-178:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$run</span>
-179:             <span class="ruby-identifier">sync</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
-180:             <span class="ruby-ivar">@gauge_1</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-value">0</span>)
-181:             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">clear</span>
-182:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Are you certain that you want to begin\nrunning the script?&quot;</span>, <span class="ruby-value str">&quot;ARM SHOW!&quot;</span>, <span class="ruby-constant">YES_NO</span>).<span class="ruby-identifier">show_modal</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ID_NO</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">mod</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>     
-183:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mod</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
-184:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Beginning dry run&quot;</span>)           
-185:                 <span class="ruby-identifier">$run</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
-186:                     <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">dry_run</span>(<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:read_addr</span>], [<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:delay</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:fire_delay</span>]]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prog</span>, <span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
-187:                         <span class="ruby-identifier">sync</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
-188:                             <span class="ruby-ivar">@gauge_1</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">prog</span>)
-189:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">set_insertion_point_end</span>
-190:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">write_text</span>(<span class="ruby-node">&quot;#{msg}\n&quot;</span>)
-191:                         <span class="ruby-keyword kw">end</span>
-192:                     <span class="ruby-keyword kw">end</span>
-193:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Run Ended&quot;</span>)
-194:                     <span class="ruby-identifier">$run</span> = <span class="ruby-keyword kw">nil</span>
-195:                 <span class="ruby-keyword kw">end</span>
-196:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">mod</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>    
-197:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Beginning run&quot;</span>)
-198:                 <span class="ruby-identifier">$run</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
-199:                     <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">run</span>([<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:data_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:control_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:read_addr</span>]], [<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:delay</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:fire_delay</span>]]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prog</span>, <span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
-200:                         <span class="ruby-identifier">sync</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
-201:                             <span class="ruby-ivar">@gauge_1</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">prog</span>)
-202:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">set_insertion_point_end</span>
-203:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">write_text</span>(<span class="ruby-node">&quot;#{msg}\n&quot;</span>)
-204:                         <span class="ruby-keyword kw">end</span>
-205:                     <span class="ruby-keyword kw">end</span>
-206:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Run Ended&quot;</span>)
-207:                     <span class="ruby-identifier">$run</span> = <span class="ruby-keyword kw">nil</span>
-208:                 <span class="ruby-keyword kw">end</span>
-209:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">mod</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-210:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;Beginning run from command #{@script_display.get_selection}&quot;</span>)
-211:                 <span class="ruby-identifier">$run</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
-212:                     <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">run</span>([<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:data_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:control_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:read_addr</span>]], [<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:delay</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:fire_delay</span>]], <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prog</span>, <span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
-213:                         <span class="ruby-identifier">sync</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
-214:                             <span class="ruby-ivar">@gauge_1</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">prog</span>)
-215:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">set_insertion_point_end</span>
-216:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">write_text</span>(<span class="ruby-node">&quot;#{msg}\n&quot;</span>)
-217:                         <span class="ruby-keyword kw">end</span>
-218:                     <span class="ruby-keyword kw">end</span>
-219:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Run Ended&quot;</span>)
-220:                     <span class="ruby-identifier">$run</span> = <span class="ruby-keyword kw">nil</span>
-221:                 <span class="ruby-keyword kw">end</span>
-222:             <span class="ruby-keyword kw">end</span>
-223:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
-224:             <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in run_script()&quot;</span>)
-225:             <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;No starting point selected for run!&quot;</span>,
-226:                 <span class="ruby-value str">&quot;Run from...&quot;</span>, <span class="ruby-constant">OK</span>)
-227:         <span class="ruby-keyword kw">end</span>
-228:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Returning to main thread&quot;</span>)
-229:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 177</span>
+177:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_script</span>(<span class="ruby-identifier">mod</span> = <span class="ruby-value">0</span>)
+178:         <span class="ruby-keyword kw">begin</span>
+179:             <span class="ruby-ivar">@window_notebook</span>.<span class="ruby-identifier">set_selection</span>(<span class="ruby-value">2</span>)
+180:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$run</span>
+181:             <span class="ruby-identifier">sync</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
+182:             <span class="ruby-ivar">@gauge_1</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-value">0</span>)
+183:             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">clear</span>
+184:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Are you certain that you want to begin\nrunning the script?&quot;</span>, <span class="ruby-value str">&quot;ARM SHOW!&quot;</span>, <span class="ruby-constant">YES_NO</span>).<span class="ruby-identifier">show_modal</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ID_NO</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">mod</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+185: 
+186:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mod</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+187:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Beginning dry run&quot;</span>)           
+188:                 <span class="ruby-identifier">$run</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+189:                     <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">dry_run</span>(<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:read_addr</span>], [<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:delay</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:fire_delay</span>]]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prog</span>, <span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+190:                         <span class="ruby-identifier">sync</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
+191:                             <span class="ruby-ivar">@gauge_1</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">prog</span>)
+192:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">set_insertion_point_end</span>
+193:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">write_text</span>(<span class="ruby-node">&quot;#{msg}\n&quot;</span>)
+194:                         <span class="ruby-keyword kw">end</span>
+195:                     <span class="ruby-keyword kw">end</span>
+196:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Run Ended&quot;</span>)
+197:                     <span class="ruby-identifier">$run</span> = <span class="ruby-keyword kw">nil</span>
+198:                 <span class="ruby-keyword kw">end</span>
+199:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">mod</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>    
+200:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Beginning run&quot;</span>)
+201:                 <span class="ruby-identifier">$run</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+202:                     <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">run</span>([<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:data_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:control_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:read_addr</span>]], [<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:delay</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:fire_delay</span>]]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prog</span>, <span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+203:                         <span class="ruby-identifier">sync</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
+204:                             <span class="ruby-ivar">@gauge_1</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">prog</span>)
+205:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">set_insertion_point_end</span>
+206:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">write_text</span>(<span class="ruby-node">&quot;#{msg}\n&quot;</span>)
+207:                         <span class="ruby-keyword kw">end</span>
+208:                     <span class="ruby-keyword kw">end</span>
+209:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Run Ended&quot;</span>)
+210:                     <span class="ruby-identifier">$run</span> = <span class="ruby-keyword kw">nil</span>
+211:                 <span class="ruby-keyword kw">end</span>
+212:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">mod</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+213:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;Beginning run from command #{@script_display.get_selection}&quot;</span>)
+214:                 <span class="ruby-identifier">$run</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+215:                     <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">run</span>([<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:data_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:control_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:read_addr</span>]], [<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:delay</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:fire_delay</span>]], <span class="ruby-ivar">@script_display</span>.<span class="ruby-identifier">get_selection</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prog</span>, <span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+216:                         <span class="ruby-identifier">sync</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
+217:                             <span class="ruby-ivar">@gauge_1</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">prog</span>)
+218:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">set_insertion_point_end</span>
+219:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">write_text</span>(<span class="ruby-node">&quot;#{msg}\n&quot;</span>)
+220:                         <span class="ruby-keyword kw">end</span>
+221:                     <span class="ruby-keyword kw">end</span>
+222:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Run Ended&quot;</span>)
+223:                     <span class="ruby-identifier">$run</span> = <span class="ruby-keyword kw">nil</span>
+224:                 <span class="ruby-keyword kw">end</span>
+225:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">mod</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
+226:                 <span class="ruby-identifier">dlg</span> = <span class="ruby-constant">TextEntryDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Please enter the number of times you want the script to loop.\n\nIf you make this number 0, the script will loop infinetly\n until you stop it manually&quot;</span>)
+227:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">show_modal</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ID_OK</span>
+228:                     <span class="ruby-identifier">loop</span> = <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">get_value</span>.<span class="ruby-identifier">to_i</span>
+229:                 <span class="ruby-keyword kw">else</span>
+230:                     <span class="ruby-keyword kw">return</span>
+231:                 <span class="ruby-keyword kw">end</span>
+232: 
+233:                 <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Beginning run&quot;</span>)
+234:                 <span class="ruby-identifier">$run</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+235:                     <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">run</span>([<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:data_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:control_addr</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:read_addr</span>]], [<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:delay</span>], <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:fire_delay</span>]], <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">loop</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prog</span>, <span class="ruby-identifier">msg</span><span class="ruby-operator">|</span>
+236:                         <span class="ruby-identifier">sync</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
+237:                             <span class="ruby-ivar">@gauge_1</span>.<span class="ruby-identifier">set_value</span>(<span class="ruby-identifier">prog</span>)
+238:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">set_insertion_point_end</span>
+239:                             <span class="ruby-ivar">@run_box</span>.<span class="ruby-identifier">write_text</span>(<span class="ruby-node">&quot;#{msg}\n&quot;</span>)
+240:                         <span class="ruby-keyword kw">end</span>
+241:                     <span class="ruby-keyword kw">end</span>
+242:                     <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Run Ended&quot;</span>)
+243:                     <span class="ruby-identifier">$run</span> = <span class="ruby-keyword kw">nil</span>
+244:                 <span class="ruby-keyword kw">end</span>
+245:             <span class="ruby-keyword kw">end</span>
+246:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NoMethodError</span>
+247:             <span class="ruby-identifier">log</span>(<span class="ruby-value">2</span>, <span class="ruby-value str">&quot;Exception handled in run_script()&quot;</span>)
+248:             <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;No starting point selected for run!&quot;</span>,
+249:                 <span class="ruby-value str">&quot;Run from...&quot;</span>, <span class="ruby-constant">OK</span>)
+250:         <span class="ruby-keyword kw">end</span>
+251:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Returning to main thread&quot;</span>)
+252:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1260,19 +1304,17 @@ Saves the current script.
 					<div class="method-source-code"
 						id="save-script-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 142</span>
-142:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save_script</span>()
-143:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:name</span>]
-144:             <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;Saving script to #{$attr[:name]}&quot;</span>)
-145:             <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:name</span>], <span class="ruby-value str">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">fout</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">$script</span>, <span class="ruby-identifier">fout</span>)}
-146:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Saving script&quot;</span>)
-147:             <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;#{$attr[:name]}.atr&quot;</span>, <span class="ruby-value str">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">fout</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">$attr</span>, <span class="ruby-identifier">fout</span>)}
-148:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Saving attributes&quot;</span>)
-149:             <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">modified</span> = <span class="ruby-keyword kw">false</span>
-150:         <span class="ruby-keyword kw">else</span>
-151:             <span class="ruby-identifier">saveas_script</span>()
-152:         <span class="ruby-keyword kw">end</span>
-153:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 145</span>
+145:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save_script</span>()
+146:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:name</span>]
+147:             <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-node">&quot;Saving script to #{$attr[:name]}&quot;</span>)
+148:             <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">$attr</span>[<span class="ruby-value">:name</span>], <span class="ruby-value str">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">fout</span><span class="ruby-operator">|</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>([<span class="ruby-identifier">$script</span>, <span class="ruby-identifier">$attr</span>], <span class="ruby-identifier">fout</span>)}
+149:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script saved&quot;</span>)
+150:             <span class="ruby-identifier">$script</span>.<span class="ruby-identifier">modified</span> = <span class="ruby-keyword kw">false</span>
+151:         <span class="ruby-keyword kw">else</span>
+152:             <span class="ruby-identifier">saveas_script</span>()
+153:         <span class="ruby-keyword kw">end</span>
+154:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1305,16 +1347,16 @@ Allows the user to select a directory and filename to save their script to.
 					<div class="method-source-code"
 						id="saveas-script-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 157</span>
-157:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">saveas_script</span>()
-158:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Opening save dialog&quot;</span>)
-159:         <span class="ruby-identifier">dlg</span> = <span class="ruby-constant">FileDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Save file as...&quot;</span>, <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">getwd</span>(), <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-value str">&quot;Pport Script (*.scp)|*.scp&quot;</span>, <span class="ruby-constant">SAVE</span>)
-160:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">show_modal</span>() <span class="ruby-operator">==</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">ID_OK</span>
-161:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;File selected&quot;</span>)
-162:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:name</span>] = <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">get_path</span>()
-163:             <span class="ruby-identifier">save_script</span>()
-164:         <span class="ruby-keyword kw">end</span>
-165:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 158</span>
+158:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">saveas_script</span>()
+159:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Opening save dialog&quot;</span>)
+160:         <span class="ruby-identifier">dlg</span> = <span class="ruby-constant">FileDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-value str">&quot;Save file as...&quot;</span>, <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">getwd</span>(), <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-value str">&quot;Pport Script (*.scp)|*.scp&quot;</span>, <span class="ruby-constant">SAVE</span>)
+161:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">show_modal</span>() <span class="ruby-operator">==</span> <span class="ruby-constant">Wx</span><span class="ruby-operator">::</span><span class="ruby-constant">ID_OK</span>
+162:             <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;File selected&quot;</span>)
+163:             <span class="ruby-identifier">$attr</span>[<span class="ruby-value">:name</span>] = <span class="ruby-identifier">dlg</span>.<span class="ruby-identifier">get_path</span>()
+164:             <span class="ruby-identifier">save_script</span>()
+165:         <span class="ruby-keyword kw">end</span>
+166:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1347,14 +1389,14 @@ Stops any currently running script, killing the thread it is running in.
 					<div class="method-source-code"
 						id="stop-run-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 470</span>
-470:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stop_run</span>()
-471:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script told to stop.&quot;</span>)
-472:                 <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$run</span>
-473:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Stopping script.&quot;</span>)
-474:         <span class="ruby-identifier">$run</span>.<span class="ruby-identifier">kill</span>
-475:         <span class="ruby-identifier">$run</span> = <span class="ruby-keyword kw">nil</span>
-476:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/gui_main_event.rb, line 496</span>
+496:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stop_run</span>()
+497:         <span class="ruby-identifier">log</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;Script told to stop.&quot;</span>)
+498:                 <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">$run</span>
+499:         <span class="ruby-identifier">log</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;Stopping script.&quot;</span>)
+500:         <span class="ruby-identifier">$run</span>.<span class="ruby-identifier">kill!</span>
+501:         <span class="ruby-identifier">$run</span> = <span class="ruby-keyword kw">nil</span>
+502:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
