@@ -93,6 +93,7 @@
                                                         <item>Write Event</item>
                                                         <item>Time Event</item>
                                                         <item>Read Event</item>
+                                                        <item>Script Event</item>
                                                     </content>
                                                 </object>
                                             </object>

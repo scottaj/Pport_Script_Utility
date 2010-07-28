@@ -1,15 +1,5 @@
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Copyright(c) 2010 Al Scott
+# License details can be found in the LICENSE file.
 
 require 'gui_main'
 require 'gui_conf_event'
@@ -293,6 +283,12 @@ class GUIMainEvent < GUIMain
             @command_choice.clear
             @command_choice.append("Wait for read port to change")
             @command_choice.append("Wait for read port to have specific value")
+        elsif choice.match(/script/i)
+            log(0, "Script event selected")
+            @command_choice.clear
+            @command_choice.append("Pause script")
+            @command_choice.append("Play script")
+            @command_choice.append("Load and start another script")
         else
             log(0, "Other selected")
             @command_choice.clear
@@ -366,7 +362,7 @@ class GUIMainEvent < GUIMain
                 event = TimeEvent.new(@comment_text.get_value, @data_text.get_value)
             end
         elsif event_type.match(/read/i)
-            log(0, "Creating foreign event")
+            log(0, "Creating read event")
             if event_subtype.match(/change/)
                 event = ReadEvent.new(@comment_text.get_value, -1)
             elsif event_subtype.match(/value/)

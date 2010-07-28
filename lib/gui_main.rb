@@ -1,4 +1,6 @@
-
+# Copyright(c) 2010 Al Scott
+# License details can be found in the LICENSE file.
+# 
 # This class was automatically generated from XRC source. It is not
 # recommended that this file is edited directly; instead, inherit from
 # this class and extend its behaviour there.  
