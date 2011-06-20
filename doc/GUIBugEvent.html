@@ -94,11 +94,9 @@
 				
 					<li class="file"><a href="./README.html">README</a></li>
 				
-					<li class="file"><a href="./README~.html">README~</a></li>
-				
 					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
 				
-					<li class="file"><a href="./Rakefile~.html">Rakefile~</a></li>
+					<li class="file"><a href="./TODO.html">TODO</a></li>
 				
 					<li class="file"><a href="./nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
 				
@@ -209,14 +207,10 @@ The bug report window is initialized.
 21:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>)
 22:         <span class="ruby-keyword kw">super</span>
 23: 
-24:         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">RUBY_PLATFORM</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/mswin/</span>)
-25:             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set_icon</span>(<span class="ruby-value str">'fireworks.ico'</span>)
-26:         <span class="ruby-keyword kw">end</span>
-27: 
-28:         <span class="ruby-ivar">@parent</span> = <span class="ruby-identifier">parent</span>
-29:         <span class="ruby-identifier">evt_close</span>()                     {<span class="ruby-identifier">exit_dlg</span>}
-30:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@submit_btn</span>)         {<span class="ruby-identifier">create_report</span>()}
-31:     <span class="ruby-keyword kw">end</span></pre>
+24:         <span class="ruby-ivar">@parent</span> = <span class="ruby-identifier">parent</span>
+25:         <span class="ruby-identifier">evt_close</span>()                     {<span class="ruby-identifier">exit_dlg</span>}
+26:         <span class="ruby-identifier">evt_button</span>(<span class="ruby-ivar">@submit_btn</span>)         {<span class="ruby-identifier">create_report</span>()}
+27:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -256,16 +250,16 @@ a developer.
 					<div class="method-source-code"
 						id="create-report-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui_bug_event.rb, line 41</span>
-41:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_report</span>()
-42:         <span class="ruby-identifier">report</span> = <span class="ruby-value str">#### STEPS TO REPRODUCE BUG #####{@list_steps_text.get_value}#### DESCRIPTION OF BUG #####{@description_text.get_value}--#{@reproduce_check.get_value}--#{@past_check.get_value}#### SESSION LOG #####{@parent.log_text.get_value}--------------------------------------------------------------------------------#{IO.readlines($attr[:name]).join(&quot;\n&quot;) if $attr[:name]}</span>
-43:         
-44:         <span class="ruby-identifier">fname</span> = <span class="ruby-node">&quot;bugs/#{Time.now.to_s.split(&quot; &quot;).join(&quot;_&quot;)}_#{$attr[:name].split(/[\/\\]/).join(&quot;_&quot;) if $attr[:name]}_bug&quot;</span>
-45:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">fname</span>, <span class="ruby-value str">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">fout</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fout</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">report</span>)}
-46:         <span class="ruby-identifier">prompt</span> = <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-node">&quot;Bug report saved to file: #{fname}\nPlease email this file to the developer!&quot;</span>,
-47:                 <span class="ruby-value str">&quot;Bug Report Created&quot;</span>, <span class="ruby-constant">OK</span>)
-48:         <span class="ruby-identifier">exit_dlg</span>() <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prompt</span>.<span class="ruby-identifier">show_modal</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ID_OK</span>
-49:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/gui_bug_event.rb, line 37</span>
+37:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_report</span>()
+38:         <span class="ruby-identifier">report</span> = <span class="ruby-value str">#### STEPS TO REPRODUCE BUG #####{@list_steps_text.get_value}#### DESCRIPTION OF BUG #####{@description_text.get_value}--#{@reproduce_check.get_value}--#{@past_check.get_value}#### SESSION LOG #####{@parent.log_text.get_value}--------------------------------------------------------------------------------#{IO.readlines($attr[:name]).join(&quot;\n&quot;) if $attr[:name]}</span>
+39:         
+40:         <span class="ruby-identifier">fname</span> = <span class="ruby-node">&quot;bugs/#{Time.now.to_s.split(&quot; &quot;).join(&quot;_&quot;)}_#{$attr[:name].split(/[\/\\]/).join(&quot;_&quot;) if $attr[:name]}_bug&quot;</span>
+41:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">fname</span>, <span class="ruby-value str">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">fout</span><span class="ruby-operator">|</span> <span class="ruby-identifier">fout</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">report</span>)}
+42:         <span class="ruby-identifier">prompt</span> = <span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-node">&quot;Bug report saved to file: #{fname}\nPlease email this file to the developer!&quot;</span>,
+43:                 <span class="ruby-value str">&quot;Bug Report Created&quot;</span>, <span class="ruby-constant">OK</span>)
+44:         <span class="ruby-identifier">exit_dlg</span>() <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prompt</span>.<span class="ruby-identifier">show_modal</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ID_OK</span>
+45:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -298,11 +292,11 @@ Exits the dialog and shows the main window.
 					<div class="method-source-code"
 						id="exit-dlg-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/gui_bug_event.rb, line 34</span>
-34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exit_dlg</span>()
-35:         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">show</span>
-36:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">destroy</span>
-37:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/gui_bug_event.rb, line 30</span>
+30:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exit_dlg</span>()
+31:         <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">show</span>
+32:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">destroy</span>
+33:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

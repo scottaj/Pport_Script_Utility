@@ -35,6 +35,9 @@
                 <object class="wxMenuItem" name="run_run_from">
                     <label>Run _From</label>
                 </object>
+                <object class="wxMenuItem" name="run_loop">
+                    <label>Run In Loop</label>
+                </object>
                 <object class="wxMenuItem" name="run_dryrun">
                     <label>_Dry Run</label>
                 </object>
@@ -90,6 +93,7 @@
                                                         <item>Write Event</item>
                                                         <item>Time Event</item>
                                                         <item>Read Event</item>
+                                                        <item>Script Event</item>
                                                     </content>
                                                 </object>
                                             </object>

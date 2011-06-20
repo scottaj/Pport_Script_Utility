@@ -1,17 +1,11 @@
 #!/usr/bin/env ruby
 
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# Author: Al Scott
+# Date Created: 01/19/2010
+# Author Email: scottaj2@udmercy.edu
 # 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Copyright(c) 2010 Al Scott
+# License details can be found in the LICENSE file.
 
 require 'rubygems'
 require 'wx'
@@ -27,7 +21,7 @@ class FwApp < App
     def on_init
         t = Timer.new(self, 55)
         evt_timer(55) {Thread.pass}
-        t.start(100)
+        t.start(10)
         GUIMainEvent.new.show
     end
 end

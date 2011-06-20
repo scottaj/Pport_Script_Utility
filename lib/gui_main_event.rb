@@ -1,15 +1,5 @@
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Copyright(c) 2010 Al Scott
+# License details can be found in the LICENSE file.
 
 require 'gui_main'
 require 'gui_conf_event'
@@ -49,15 +39,16 @@ class GUIMainEvent < GUIMain
 
         # "Run" menu.
         evt_menu(@run_run)                  {run_script()}
-        evt_menu(@run_dryrun)               {run_script(-1)}
         evt_menu(@run_run_from)             {run_script(1)}
+        evt_menu(@run_loop)                 {run_script(2)}
+        evt_menu(@run_dryrun)               {run_script(-1)}
 
         # "Tools" menu.
         evt_menu(@tools_conf)               {display_conf_window()}
 
         # "Help" menu.
         evt_menu(ID_ABOUT)                  {about()}
-        evt_menu(@help_bug)                 {report_bug}
+        evt_menu(@help_bug)                 {report_bug()}
 
         # Other widgets.
         evt_choice(@event_choice)           {event_type_selected()}
@@ -82,9 +73,9 @@ class GUIMainEvent < GUIMain
 
     # Writes a log message to the screen on the log tab.
     #
-    # *<i>level</i>: An integer, either 0, 1, or 2 which correspond respectivly
+    # <i>level</i>: An integer, either 0, 1, or 2 which correspond respectivly
     #                "low", "normal", and "high" priority messages.
-    # *<i>message</i>: A log message as a string.
+    # <i>message</i>: A log message as a string.
     def log(level, message)
         levels = ["Low", "Normal", "High"]
         @log_text.set_insertion_point_end
@@ -127,10 +118,12 @@ class GUIMainEvent < GUIMain
             log(0, "File selected")
             file = dlg.get_path
             begin
-                File.open(file, 'r') {|fin| $script = YAML.load(fin)}
+                File.open(file, 'r') do |fin|
+                data = YAML.load(fin)
+                $script = data[0]
+                $attr = data[1]
+            end
                 log(0, "Script loaded")
-                File.open("#{file}.atr", 'r') {|fin| $attr = YAML.load(fin)}
-                log(0, "Attributes loaded")
             rescue
                 log(2, "Exception handled in open_script()")
             end
@@ -142,10 +135,8 @@ class GUIMainEvent < GUIMain
     def save_script()
         if $attr[:name]
             log(1, "Saving script to #{$attr[:name]}")
-            File.open($attr[:name], 'w') {|fout| YAML.dump($script, fout)}
-            log(0, "Saving script")
-            File.open("#{$attr[:name]}.atr", 'w') {|fout| YAML.dump($attr, fout)}
-            log(0, "Saving attributes")
+            File.open($attr[:name], 'w') {|fout| YAML.dump([$script, $attr], fout)}
+            log(0, "Script saved")
             $script.modified = false
         else
             saveas_script()
@@ -168,10 +159,11 @@ class GUIMainEvent < GUIMain
     # started:
     #
     # <i>mod</i>:
-    # * mod<0 is a dry run where no data is output
+    # * mod==-1 is a dry run where no data is output
     # * mod==0 is a normal run starting from the beginning of the script
-    # * mod>0 finds the currently selected command and starts the
+    # * mod==1 finds the currently selected command and starts the
     #   run from there.
+    # * mod==2 Is a looped run.
     def run_script(mod = 0)
         begin
             @window_notebook.set_selection(2)
@@ -179,8 +171,9 @@ class GUIMainEvent < GUIMain
             sync = Mutex.new
             @gauge_1.set_value(0)
             @run_box.clear
-            return if MessageDialog.new(self, "Are you certain that you want to begin\nrunning the script?", "ARM SHOW!", YES_NO).show_modal == ID_NO unless mod < 0     
-            if mod < 0
+            return if MessageDialog.new(self, "Are you certain that you want to begin\nrunning the script?", "ARM SHOW!", YES_NO).show_modal == ID_NO unless mod == -1
+
+            if mod == -1
                 log(1, "Beginning dry run")           
                 $run = Thread.new do
                     $script.dry_run($attr[:read_addr], [$attr[:delay], $attr[:fire_delay]]) do |prog, msg|
@@ -206,10 +199,30 @@ class GUIMainEvent < GUIMain
                     log(1, "Run Ended")
                     $run = nil
                 end
-            elsif mod > 0
+            elsif mod == 1
                 log(1, "Beginning run from command #{@script_display.get_selection}")
                 $run = Thread.new do
                     $script.run([$attr[:data_addr], $attr[:control_addr], $attr[:read_addr]], [$attr[:delay], $attr[:fire_delay]], @script_display.get_selection) do |prog, msg|
+                        sync.synchronize do
+                            @gauge_1.set_value(prog)
+                            @run_box.set_insertion_point_end
+                            @run_box.write_text("#{msg}\n")
+                        end
+                    end
+                    log(1, "Run Ended")
+                    $run = nil
+                end
+            elsif mod == 2
+                dlg = TextEntryDialog.new(self, "Please enter the number of times you want the script to loop.\n\nIf you make this number 0, the script will loop infinetly\n until you stop it manually")
+                if dlg.show_modal == ID_OK
+                    loop = dlg.get_value.to_i
+                else
+                    return
+                end
+
+                log(1, "Beginning run")
+                $run = Thread.new do
+                    $script.run([$attr[:data_addr], $attr[:control_addr], $attr[:read_addr]], [$attr[:delay], $attr[:fire_delay]], false, loop) do |prog, msg|
                         sync.synchronize do
                             @gauge_1.set_value(prog)
                             @run_box.set_insertion_point_end
@@ -270,6 +283,12 @@ class GUIMainEvent < GUIMain
             @command_choice.clear
             @command_choice.append("Wait for read port to change")
             @command_choice.append("Wait for read port to have specific value")
+        elsif choice.match(/script/i)
+            log(0, "Script event selected")
+            @command_choice.clear
+            @command_choice.append("Pause script")
+            @command_choice.append("Play script")
+            @command_choice.append("Load and start another script")
         else
             log(0, "Other selected")
             @command_choice.clear
@@ -287,6 +306,7 @@ class GUIMainEvent < GUIMain
                 group = $attr[:groups][choice]
                 value = nil
                 group.each {|val| value = val and break unless $attr[:used].include?(val)}
+                value = group[0] if $attr[:reuse] and not value
                 if value
                     log(0, "Auto-value #{value} found")
                     @data_text.set_value(value.to_s)
@@ -303,9 +323,9 @@ class GUIMainEvent < GUIMain
 
     # Adds an event to the script.
     #
-    # *<i>pos</i>: an optional argument that gives a
-    #              position to insert the event at, otherwise the event
-    #              is just added to the end of the script.
+    # <i>pos</i>: an optional argument that gives a
+    #             position to insert the event at, otherwise the event
+    #             is just added to the end of the script.
     def add_event(pos = false)
         log(1, "Adding event #{"at position#{pos}" if pos}")
         if $edit
@@ -322,9 +342,11 @@ class GUIMainEvent < GUIMain
         if event_type.match(/write/i)
             log(0, "Creating write event")
             begin
-                fail if $attr[:used].include?(@data_text.get_value.to_i) or !($attr[:groups][event_subtype].include?(@data_text.get_value.to_i)) or @data_text.get_value.to_i < 0 or @data_text.get_value.to_i > 511
+                fail if $attr[:used].include?(@data_text.get_value.to_i) unless $attr[:reuse]
+                fail if not ($attr[:groups][event_subtype].include?(@data_text.get_value.to_i))
+                fail if @data_text.get_value.to_i < 0 or @data_text.get_value.to_i > 511
                 event = WriteEvent.new(@comment_text.get_value, event_subtype, @data_text.get_value.to_i)
-                $attr[:used].push(@data_text.get_value.to_i)
+                $attr[:used].push(@data_text.get_value.to_i) unless $attr[:used].include?(@data_text.get_value.to_i)
             rescue RuntimeError
                 log(2, "Exception handled in add_event()")
                 MessageDialog.new(self, "Given value is invalid for this command.",
@@ -340,7 +362,7 @@ class GUIMainEvent < GUIMain
                 event = TimeEvent.new(@comment_text.get_value, @data_text.get_value)
             end
         elsif event_type.match(/read/i)
-            log(0, "Creating foreign event")
+            log(0, "Creating read event")
             if event_subtype.match(/change/)
                 event = ReadEvent.new(@comment_text.get_value, -1)
             elsif event_subtype.match(/value/)
@@ -371,10 +393,10 @@ class GUIMainEvent < GUIMain
     #
     # <i>dir</i>: A number
     #             
-    #             *If dir is negative then the selected item is
-    #             moved up <i>dir</i> places.
-    #             *If dir is positive then the selected item is
-    #             moved down <i>dir</i> places.
+    # * If dir is negative then the selected item is
+    #   moved up <i>dir</i> places.
+    # * If dir is positive then the selected item is
+    #   moved down <i>dir</i> places.
     def move_event(dir)
         log(1, "Moving event #{"up" if dir<0}#{"down" if dir>0}")
         begin
@@ -392,8 +414,8 @@ class GUIMainEvent < GUIMain
     # Removes an event from the script.
     #
     # <i>pos</i>:
-    #    * If pos is false or nil the currently selected event is deleted.
-    #    * If pos is a number then the script item at that position is deleted.
+    # * If pos is false or nil the currently selected event is deleted.
+    # * If pos is a number then the script item at that position is deleted.
     def delete_event(pos = false)
         log(1, "Deleting event")
         if pos
@@ -462,7 +484,7 @@ class GUIMainEvent < GUIMain
         log(1, "Event copied.")
 		edit_event()
         $edit = false
-        event_subtype_selected()
+        event_subtype_selected() unless $attr[:reuse]
         add_event()
     end
 
@@ -471,7 +493,7 @@ class GUIMainEvent < GUIMain
         log(0, "Script told to stop.")
 		return unless $run
         log(1, "Stopping script.")
-        $run.kill
+        $run.kill!
         $run = nil
     end
 
