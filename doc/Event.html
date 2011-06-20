@@ -92,11 +92,9 @@
 				
 					<li class="file"><a href="./README.html">README</a></li>
 				
-					<li class="file"><a href="./README~.html">README~</a></li>
-				
 					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
 				
-					<li class="file"><a href="./Rakefile~.html">Rakefile~</a></li>
+					<li class="file"><a href="./TODO.html">TODO</a></li>
 				
 					<li class="file"><a href="./nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
 				
@@ -238,11 +236,11 @@ types of events and should be used in scripts.
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/event.rb, line 18</span>
-18:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">comment</span>, *<span class="ruby-identifier">value</span>)
-19:         <span class="ruby-ivar">@value</span> = <span class="ruby-identifier">value</span>
-20:         <span class="ruby-ivar">@comment</span> = <span class="ruby-identifier">comment</span>    
-21:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/event.rb, line 19</span>
+19:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">comment</span>, *<span class="ruby-identifier">value</span>)
+20:         <span class="ruby-ivar">@value</span> = <span class="ruby-identifier">value</span>
+21:         <span class="ruby-ivar">@comment</span> = <span class="ruby-identifier">comment</span>    
+22:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -279,10 +277,10 @@ types of events and should be used in scripts.
 					<div class="method-source-code"
 						id="to-s-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/event.rb, line 25</span>
-25:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-26:         <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;Value: #{@value}#{&quot; -- &quot; if RUBY_PLATFORM.match(/mswin/i)}\n#{@comment}&quot;</span>
-27:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/event.rb, line 26</span>
+26:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+27:         <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;Value: #{@value}#{&quot; -- &quot; if RUBY_PLATFORM.match(/mswin/i) or RUBY_PLATFORM.match(/mingw/i)}\n#{@comment}&quot;</span>
+28:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

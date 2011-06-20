@@ -1,4 +1,6 @@
-
+# Copyright(c) 2010 Al Scott
+# License details can be found in the LICENSE file.
+# 
 # This class was automatically generated from XRC source. It is not
 # recommended that this file is edited directly; instead, inherit from
 # this class and extend its behaviour there.  
@@ -9,7 +11,7 @@
 class GUIMain < Wx::Frame
 	
 	attr_reader :window_menubar, :object_1, :object_2, :run_run,
-              :run_run_from, :run_dryrun, :menu_tools,
+              :run_run_from, :run_loop, :run_dryrun, :menu_tools,
               :tools_conf, :menu_help, :help_bug, :window_notebook,
               :notebook_editor, :event_choice, :command_choice,
               :label_1, :data_text, :label_2, :comment_text,
@@ -42,6 +44,7 @@ class GUIMain < Wx::Frame
 		@object_2 = finder.call("object_2")
 		@run_run = finder.call("run_run")
 		@run_run_from = finder.call("run_run_from")
+        @run_loop = finder.call("run_loop")
 		@run_dryrun = finder.call("run_dryrun")
 		@menu_tools = finder.call("menu_tools")
 		@tools_conf = finder.call("tools_conf")

@@ -1,0 +1,14 @@
+TODO
+
+Next Version:
+
+- Add ability to pause and play via script commands.
+
+- Add ability to run another script via a script command.
+
+
+Future:
+
+- Add integration with media cuing app.
+
+- Visual display of port value for current command.

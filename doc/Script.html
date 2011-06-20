@@ -102,11 +102,9 @@
 				
 					<li class="file"><a href="./README.html">README</a></li>
 				
-					<li class="file"><a href="./README~.html">README~</a></li>
-				
 					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
 				
-					<li class="file"><a href="./Rakefile~.html">Rakefile~</a></li>
+					<li class="file"><a href="./TODO.html">TODO</a></li>
 				
 					<li class="file"><a href="./nbproject/private/rake-d_txt.html">rake-d.txt</a></li>
 				
@@ -352,49 +350,49 @@ Runs the script without sending data to any hardware addresses.
 					<div class="method-source-code"
 						id="dry-run-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/script.rb, line 115</span>
-115:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dry_run</span>(<span class="ruby-identifier">read_addr</span>, <span class="ruby-identifier">delays</span>)
-116:         <span class="ruby-identifier">event_delay</span> = <span class="ruby-identifier">delays</span>[<span class="ruby-value">0</span>]
-117:         <span class="ruby-identifier">fire_delay</span> = <span class="ruby-identifier">delays</span>[<span class="ruby-value">1</span>]
-118:         <span class="ruby-identifier">prog</span> = <span class="ruby-value">0</span>
-119:         <span class="ruby-identifier">script</span> = <span class="ruby-ivar">@script</span>
-120:         <span class="ruby-identifier">threads</span> = []
-121: 
-122:         <span class="ruby-keyword kw">begin</span>
-123:             <span class="ruby-identifier">inc</span> = (<span class="ruby-value">2560</span><span class="ruby-operator">/</span><span class="ruby-identifier">script</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">to_i</span>
-124:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ZeroDivisionError</span>
-125:             <span class="ruby-identifier">inc</span> = <span class="ruby-value">2560</span>
-126:         <span class="ruby-keyword kw">end</span>
-127: 
-128:         <span class="ruby-identifier">script</span>.<span class="ruby-identifier">each_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-129:             <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">stop</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@pause</span>
-130:             <span class="ruby-identifier">event</span> = <span class="ruby-identifier">script</span>[<span class="ruby-identifier">i</span>]
-131:             <span class="ruby-identifier">value</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">value</span>
-132:             <span class="ruby-identifier">comment</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">comment</span>
-133:             <span class="ruby-identifier">prog</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">inc</span>
+     <span class="ruby-comment cmt"># File lib/script.rb, line 128</span>
+128:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dry_run</span>(<span class="ruby-identifier">read_addr</span>, <span class="ruby-identifier">delays</span>)
+129:         <span class="ruby-identifier">event_delay</span> = <span class="ruby-identifier">delays</span>[<span class="ruby-value">0</span>]
+130:         <span class="ruby-identifier">fire_delay</span> = <span class="ruby-identifier">delays</span>[<span class="ruby-value">1</span>]
+131:         <span class="ruby-identifier">prog</span> = <span class="ruby-value">0</span>
+132:         <span class="ruby-identifier">script</span> = <span class="ruby-ivar">@script</span>
+133:         <span class="ruby-identifier">threads</span> = []
 134: 
-135:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
-136:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting until #{value}.\n- #{comment}\n&quot;</span>
-137:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
-138:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>)
-139:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Pausing for #{value} seconds.\n- #{comment}\n&quot;</span>
-140:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
-141:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">ReadEvent</span>)
-142:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting for read address to change.\n- #{comment}\n&quot;</span>
-143:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">read_addr</span>)
-144:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WriteEvent</span>)
-145:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Simulating telling #{value[0]} at position #{value[1]} to fire.\n- #{comment}\n&quot;</span>
-146:                 <span class="ruby-identifier">t</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
-147:                     <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">fire_delay</span>)
-148:                     <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{value[0]} at position #{value[1]} would be firing NOW!&quot;</span>
-149:                 <span class="ruby-keyword kw">end</span>
-150:                 <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">t</span>)
-151:             <span class="ruby-keyword kw">end</span>
-152:         <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">event_delay</span>)
-153:         <span class="ruby-keyword kw">end</span>
-154:         <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">join</span>}
-155:         <span class="ruby-keyword kw">yield</span> <span class="ruby-value">2560</span>, <span class="ruby-value str">&quot;Execution Finished!&quot;</span>
-156:     <span class="ruby-keyword kw">end</span></pre>
+135:         <span class="ruby-keyword kw">begin</span>
+136:             <span class="ruby-identifier">inc</span> = (<span class="ruby-value">2560</span><span class="ruby-operator">/</span><span class="ruby-identifier">script</span>.<span class="ruby-identifier">length</span>).<span class="ruby-identifier">to_i</span>
+137:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ZeroDivisionError</span>
+138:             <span class="ruby-identifier">inc</span> = <span class="ruby-value">2560</span>
+139:         <span class="ruby-keyword kw">end</span>
+140: 
+141:         <span class="ruby-identifier">script</span>.<span class="ruby-identifier">each_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+142:             <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">stop</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@pause</span>
+143:             <span class="ruby-identifier">event</span> = <span class="ruby-identifier">script</span>[<span class="ruby-identifier">i</span>]
+144:             <span class="ruby-identifier">value</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">value</span>
+145:             <span class="ruby-identifier">comment</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">comment</span>
+146:             <span class="ruby-identifier">prog</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">inc</span>
+147: 
+148:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
+149:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting until #{value}.\n- #{comment}\n&quot;</span>
+150:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
+151:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>)
+152:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Pausing for #{value} seconds.\n- #{comment}\n&quot;</span>
+153:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
+154:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">ReadEvent</span>)
+155:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting for read address to change.\n- #{comment}\n&quot;</span>
+156:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">read_addr</span>)
+157:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WriteEvent</span>)
+158:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Simulating telling #{value[0]} at position #{value[1]} to fire.\n- #{comment}\n&quot;</span>
+159:                 <span class="ruby-identifier">t</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+160:                     <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">fire_delay</span>)
+161:                     <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{value[0]} at position #{value[1]} would be firing NOW!&quot;</span>
+162:                 <span class="ruby-keyword kw">end</span>
+163:                 <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">t</span>)
+164:             <span class="ruby-keyword kw">end</span>
+165:         <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">event_delay</span>)
+166:         <span class="ruby-keyword kw">end</span>
+167:         <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">join</span>}
+168:         <span class="ruby-keyword kw">yield</span> <span class="ruby-value">2560</span>, <span class="ruby-value str">&quot;Execution Finished!&quot;</span>
+169:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -487,7 +485,7 @@ Removes the event at the given position.
 				<div class="method-heading">
 				
 					<span class="method-name">run</span><span
-						class="method-args">(addresses, delays, start = false)</span>
+						class="method-args">(addresses, delays, start = false, loop = 1)</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
 				</div>
@@ -504,7 +502,7 @@ Runs the script out the given hardware addresses.
 						id="run-source">
 <pre>
      <span class="ruby-comment cmt"># File lib/script.rb, line 60</span>
- 60:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>(<span class="ruby-identifier">addresses</span>, <span class="ruby-identifier">delays</span>, <span class="ruby-identifier">start</span> = <span class="ruby-keyword kw">false</span>)
+ 60:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>(<span class="ruby-identifier">addresses</span>, <span class="ruby-identifier">delays</span>, <span class="ruby-identifier">start</span> = <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">loop</span> = <span class="ruby-value">1</span>)
  61:         <span class="ruby-identifier">data_addr</span> = <span class="ruby-identifier">addresses</span>[<span class="ruby-value">0</span>]
  62:         <span class="ruby-identifier">ctrl_addr</span> = <span class="ruby-identifier">addresses</span>[<span class="ruby-value">1</span>]
  63:         <span class="ruby-identifier">read_addr</span> = <span class="ruby-identifier">addresses</span>[<span class="ruby-value">2</span>]
@@ -521,42 +519,55 @@ Runs the script out the given hardware addresses.
  74:             <span class="ruby-identifier">inc</span> = <span class="ruby-value">2560</span>
  75:         <span class="ruby-keyword kw">end</span>
  76: 
- 77:         <span class="ruby-identifier">script</span>.<span class="ruby-identifier">each_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
- 78:             <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">stop</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@pause</span>
- 79:             <span class="ruby-identifier">event</span> = <span class="ruby-identifier">script</span>[<span class="ruby-identifier">i</span>]
- 80:             <span class="ruby-identifier">value</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">value</span>
- 81:             <span class="ruby-identifier">comment</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">comment</span>
- 82:             <span class="ruby-identifier">prog</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">inc</span>
- 83: 
- 84:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
- 85:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting until #{value}.\n- #{comment}\n&quot;</span>
- 86:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
- 87:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>)
- 88:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Pausing for #{value} seconds.\n- #{comment}\n&quot;</span>
- 89:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
- 90:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">ReadEvent</span>)
- 91:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting for read address to change.\n- #{comment}\n&quot;</span>
- 92:                 <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">read_addr</span>)
- 93:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WriteEvent</span>)
- 94:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span>
- 95:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">strobe</span>(<span class="ruby-identifier">ctrl_addr</span>)
- 96:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">data_addr</span>)
- 97:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">strobe</span>(<span class="ruby-identifier">ctrl_addr</span>, <span class="ruby-keyword kw">false</span>)
- 98:                 <span class="ruby-keyword kw">else</span>
- 99:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">data_addr</span>)
-100:                 <span class="ruby-keyword kw">end</span>
-101:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Telling #{value[0]} at position #{value[1]} to fire.\n- #{comment}\n&quot;</span>
-102:                 <span class="ruby-identifier">t</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
-103:                     <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">fire_delay</span>)
-104:                     <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{value[0]} at position #{value[1]} should be firing NOW!&quot;</span>
-105:                 <span class="ruby-keyword kw">end</span>
-106:                 <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">t</span>)
-107:             <span class="ruby-keyword kw">end</span>
-108:             <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">event_delay</span>)
-109:         <span class="ruby-keyword kw">end</span>
-110:         <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">join</span>}
-111:         <span class="ruby-keyword kw">yield</span> <span class="ruby-value">2560</span>, <span class="ruby-value str">&quot;Execution Finished!&quot;</span>
-112:     <span class="ruby-keyword kw">end</span></pre>
+ 77:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">loop</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+ 78:             <span class="ruby-identifier">counter</span> = <span class="ruby-value">0</span>
+ 79:         <span class="ruby-keyword kw">else</span>
+ 80:             <span class="ruby-identifier">counter</span> = <span class="ruby-value">1</span>
+ 81:         <span class="ruby-keyword kw">end</span>
+ 82:         
+ 83:         <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">counter</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">loop</span>
+ 84:             <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">counter</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+ 85:                 <span class="ruby-identifier">prog</span> = <span class="ruby-value">0</span>
+ 86:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-value str">&quot;Starting next iteration&quot;</span>
+ 87:             <span class="ruby-keyword kw">end</span>
+ 88:             <span class="ruby-identifier">script</span>.<span class="ruby-identifier">each_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+ 89:                 <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">stop</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@pause</span>
+ 90:                 <span class="ruby-identifier">event</span> = <span class="ruby-identifier">script</span>[<span class="ruby-identifier">i</span>]
+ 91:                 <span class="ruby-identifier">value</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">value</span>
+ 92:                 <span class="ruby-identifier">comment</span> = <span class="ruby-identifier">event</span>.<span class="ruby-identifier">comment</span>
+ 93:                 <span class="ruby-identifier">prog</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">inc</span>
+ 94: 
+ 95:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">TimeEvent</span>)
+ 96:                     <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting until #{value}.\n- #{comment}\n&quot;</span>
+ 97:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
+ 98:                 <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WaitEvent</span>)
+ 99:                     <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Pausing for #{value} seconds.\n- #{comment}\n&quot;</span>
+100:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>
+101:                 <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">ReadEvent</span>)
+102:                     <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Waiting for read address to change.\n- #{comment}\n&quot;</span>
+103:                     <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">read_addr</span>)
+104:                 <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">event</span>.<span class="ruby-identifier">instance_of?</span>(<span class="ruby-constant">WriteEvent</span>)
+105:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">255</span>
+106:                         <span class="ruby-identifier">event</span>.<span class="ruby-identifier">strobe</span>(<span class="ruby-identifier">ctrl_addr</span>)
+107:                         <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">data_addr</span>)
+108:                         <span class="ruby-identifier">event</span>.<span class="ruby-identifier">strobe</span>(<span class="ruby-identifier">ctrl_addr</span>, <span class="ruby-keyword kw">false</span>)
+109:                     <span class="ruby-keyword kw">else</span>
+110:                         <span class="ruby-identifier">event</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">data_addr</span>)
+111:                     <span class="ruby-keyword kw">end</span>
+112:                     <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{i+1}/#{script.length}: Telling #{value[0]} at position #{value[1]} to fire.\n- #{comment}\n&quot;</span>
+113:                     <span class="ruby-identifier">t</span> = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+114:                         <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">fire_delay</span>)
+115:                         <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">prog</span>, <span class="ruby-node">&quot;#{value[0]} at position #{value[1]} should be firing NOW!&quot;</span>
+116:                     <span class="ruby-keyword kw">end</span>
+117:                     <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">t</span>)
+118:                 <span class="ruby-keyword kw">end</span>
+119:                 <span class="ruby-identifier">sleep</span>(<span class="ruby-identifier">event_delay</span>)
+120:             <span class="ruby-keyword kw">end</span>
+121:             <span class="ruby-identifier">counter</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+122:         <span class="ruby-keyword kw">end</span>
+123:         <span class="ruby-identifier">threads</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">join</span>}
+124:         <span class="ruby-keyword kw">yield</span> <span class="ruby-value">2560</span>, <span class="ruby-value str">&quot;Execution Finished!&quot;</span>
+125:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -587,12 +598,12 @@ Runs the script out the given hardware addresses.
 					<div class="method-source-code"
 						id="to-s-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/script.rb, line 158</span>
-158:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>()
-159:         <span class="ruby-identifier">str</span> = []
-160:         <span class="ruby-ivar">@script</span>.<span class="ruby-identifier">each_index</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">push</span>(<span class="ruby-node">&quot;Command #{i+1}/#{@script.length}: #{@script[i].to_s}&quot;</span>)}
-161:         <span class="ruby-identifier">str</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;&amp;&amp;&amp;&quot;</span>)
-162:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/script.rb, line 171</span>
+171:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>()
+172:         <span class="ruby-identifier">str</span> = []
+173:         <span class="ruby-ivar">@script</span>.<span class="ruby-identifier">each_index</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">push</span>(<span class="ruby-node">&quot;Command #{i+1}/#{@script.length}: #{@script[i].to_s}&quot;</span>)}
+174:         <span class="ruby-identifier">str</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;&amp;&amp;&amp;&quot;</span>)
+175:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

@@ -1,15 +1,5 @@
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Copyright(c) 2010 Al Scott
+# License details can be found in the LICENSE file.
 
 require 'gui'
 require "gui_conf"
@@ -30,14 +20,17 @@ class GUIConfEvent < GUIConf
         @conf_hread_text.set_value("0x#{$attr[:read_addr].to_s(16)}")
         @conf_hdata_text.set_value("0x#{$attr[:data_addr].to_s(16)}")
         @conf_hcontrol_text.set_value("0x#{$attr[:control_addr].to_s(16)}")
+        @allow_reuse_chk.set_value($attr[:reuse])
         write_groups()
 
         # Events
-        evt_close()                 {conf_exit}
+        evt_close()                     {conf_exit()}
         
-        evt_button(ID_APPLY)        {add_group}
-        evt_button(ID_CLEAR)        {clear_group}
-        evt_button(@conf_edit_btn)  {edit_group}
+        evt_button(ID_APPLY)            {add_group()}
+        evt_button(ID_CLEAR)            {clear_group()}
+        evt_button(@conf_edit_btn)      {edit_group()}
+
+        evt_checkbox(@allow_reuse_chk)  {toggle_reuse()}
     end
 
     # Writes all current groups to the list.
@@ -107,6 +100,16 @@ class GUIConfEvent < GUIConf
             @conf_group_values_text.set_value(selection[1].strip)
             clear_group()
         rescue NoMethodError # Raised if no group selected from list.
+        end
+    end
+
+    # Toggles ability to reuse group values in a script.
+    # Called when the Reuse chechbox is checked or unchecked.
+    def toggle_reuse()
+        if @allow_reuse_chk.is_checked
+            $attr[:reuse] = true
+        else
+            $attr[:reuse] = false
         end
     end
 end

@@ -1,15 +1,5 @@
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# Copyright(c) 2010 Al Scott
+# License details can be found in the LICENSE file.
 
 require 'time_event'
 require 'write_event'
@@ -57,7 +47,7 @@ class Script
     end
 
     # Runs the script out the given hardware addresses.
-    def run(addresses, delays, start = false)
+    def run(addresses, delays, start = false, loop = 1)
         data_addr = addresses[0]
         ctrl_addr = addresses[1]
         read_addr = addresses[2]
@@ -74,38 +64,51 @@ class Script
             inc = 2560
         end
 
-        script.each_index do |i|
-            Thread.stop if @pause
-            event = script[i]
-            value = event.value
-            comment = event.comment
-            prog += inc
-
-            if event.instance_of?(TimeEvent)
-                yield prog, "#{i+1}/#{script.length}: Waiting until #{value}.\n- #{comment}\n"
-                event.exec
-            elsif event.instance_of?(WaitEvent)
-                yield prog, "#{i+1}/#{script.length}: Pausing for #{value} seconds.\n- #{comment}\n"
-                event.exec
-            elsif event.instance_of?(ReadEvent)
-                yield prog, "#{i+1}/#{script.length}: Waiting for read address to change.\n- #{comment}\n"
-                event.exec(read_addr)
-            elsif event.instance_of?(WriteEvent)
-                if value[1] > 255
-                    event.strobe(ctrl_addr)
-                    event.exec(data_addr)
-                    event.strobe(ctrl_addr, false)
-                else
-                    event.exec(data_addr)
-                end
-                yield prog, "#{i+1}/#{script.length}: Telling #{value[0]} at position #{value[1]} to fire.\n- #{comment}\n"
-                t = Thread.new do
-                    sleep(fire_delay)
-                    yield prog, "#{value[0]} at position #{value[1]} should be firing NOW!"
-                end
-                threads.push(t)
+        if loop > 0
+            counter = 0
+        else
+            counter = 1
+        end
+        
+        while counter != loop
+            unless counter == 0
+                prog = 0
+                yield prog, "Starting next iteration"
             end
-            sleep(event_delay)
+            script.each_index do |i|
+                Thread.stop if @pause
+                event = script[i]
+                value = event.value
+                comment = event.comment
+                prog += inc
+
+                if event.instance_of?(TimeEvent)
+                    yield prog, "#{i+1}/#{script.length}: Waiting until #{value}.\n- #{comment}\n"
+                    event.exec
+                elsif event.instance_of?(WaitEvent)
+                    yield prog, "#{i+1}/#{script.length}: Pausing for #{value} seconds.\n- #{comment}\n"
+                    event.exec
+                elsif event.instance_of?(ReadEvent)
+                    yield prog, "#{i+1}/#{script.length}: Waiting for read address to change.\n- #{comment}\n"
+                    event.exec(read_addr)
+                elsif event.instance_of?(WriteEvent)
+                    if value[1] > 255
+                        event.strobe(ctrl_addr)
+                        event.exec(data_addr)
+                        event.strobe(ctrl_addr, false)
+                    else
+                        event.exec(data_addr)
+                    end
+                    yield prog, "#{i+1}/#{script.length}: Telling #{value[0]} at position #{value[1]} to fire.\n- #{comment}\n"
+                    t = Thread.new do
+                        sleep(fire_delay)
+                        yield prog, "#{value[0]} at position #{value[1]} should be firing NOW!"
+                    end
+                    threads.push(t)
+                end
+                sleep(event_delay)
+            end
+            counter += 1
         end
         threads.each {|t| t.join}
         yield 2560, "Execution Finished!"
